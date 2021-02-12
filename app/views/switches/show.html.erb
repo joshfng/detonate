@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @switch.user_id %>
+</p>
+
+<p>
+  <strong>Name ciphertext:</strong>
+  <%= @switch.name_ciphertext %>
+</p>
+
+<p>
+  <strong>Content ciphertext:</strong>
+  <%= @switch.content_ciphertext %>
+</p>
+
+<p>
+  <strong>Checkin interval:</strong>
+  <%= @switch.checkin_interval %>
+</p>
+
+<p>
+  <strong>Max missed checks:</strong>
+  <%= @switch.max_missed_checks %>
+</p>
+
+<p>
+  <strong>Missed checks:</strong>
+  <%= @switch.missed_checks %>
+</p>
+
+<p>
+  <strong>Checkin window:</strong>
+  <%= @switch.checkin_window %>
+</p>
+
+<%= link_to 'Edit', edit_switch_path(@switch) %> |
+<%= link_to 'Back', switches_path %>
