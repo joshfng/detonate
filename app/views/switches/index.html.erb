@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Switches</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Name ciphertext</th>
+      <th>Content ciphertext</th>
+      <th>Checkin interval</th>
+      <th>Max missed checks</th>
+      <th>Missed checks</th>
+      <th>Checkin window</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @switches.each do |switch| %>
+      <tr>
+        <td><%= switch.user_id %></td>
+        <td><%= switch.name_ciphertext %></td>
+        <td><%= switch.content_ciphertext %></td>
+        <td><%= switch.checkin_interval %></td>
+        <td><%= switch.max_missed_checks %></td>
+        <td><%= switch.missed_checks %></td>
+        <td><%= switch.checkin_window %></td>
+        <td><%= link_to 'Show', switch %></td>
+        <td><%= link_to 'Edit', edit_switch_path(switch) %></td>
+        <td><%= link_to 'Destroy', switch, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Switch', new_switch_path %>

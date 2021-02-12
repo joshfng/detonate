@@ -19,6 +19,7 @@ gem 'redis', '~> 4.0'
 gem 'devise'
 
 # Encryption
+gem 'blind_index'
 gem 'lockbox'
 
 gem 'bootsnap', '>= 1.4.4', require: false
@@ -28,6 +29,7 @@ group :development, :test do
 end
 
 group :development do
+  gem 'rubocop'
   gem 'letter_opener'
   gem 'web-console', '>= 4.1.0'
   gem 'rack-mini-profiler', '~> 2.0'

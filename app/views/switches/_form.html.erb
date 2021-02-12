@@ -1,0 +1,47 @@
+<%= form_with(model: switch) do |form| %>
+  <% if switch.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(switch.errors.count, "error") %> prohibited this switch from being saved:</h2>
+
+      <ul>
+        <% switch.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_area :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :content %>
+    <%= form.text_area :content %>
+  </div>
+
+  <div class="field">
+    <%= form.label :checkin_interval %>
+    <%= form.text_field :checkin_interval %>
+  </div>
+
+  <div class="field">
+    <%= form.label :max_missed_checks %>
+    <%= form.text_field :max_missed_checks %>
+  </div>
+
+  <div class="field">
+    <%= form.label :missed_checks %>
+    <%= form.text_field :missed_checks %>
+  </div>
+
+  <div class="field">
+    <%= form.label :checkin_window %>
+    <%= form.text_field :checkin_window %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
