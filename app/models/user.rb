@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :validatable,
          :confirmable, :lockable, :timeoutable, :trackable
 
-  has_many :switches
+  has_many :switches, dependent: destroy
 
   encrypts :email, :unconfirmed_email
   blind_index :email, :unconfirmed_email

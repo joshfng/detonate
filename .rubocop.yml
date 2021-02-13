@@ -1,3 +1,8 @@
+require:
+  - rubocop-rails
+  - rubocop-rspec
+  - rubocop-performance
+
 AllCops:
   Exclude:
     - 'db/**/*'
@@ -9,3 +14,13 @@ AllCops:
 
 Style/Documentation:
   Enabled: false
+
+Metrics/BlockLength:
+  Max: 100
+Metrics/AbcSize:
+  Max: 30
+
+RSpec/ExampleLength:
+  Max: 20
+RSpec/MultipleExpectations:
+  Max: 10
