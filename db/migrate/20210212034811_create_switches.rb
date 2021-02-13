@@ -7,6 +7,7 @@ class CreateSwitches < ActiveRecord::Migration[6.1]
       t.text :name_ciphertext, null: false
       t.text :content_ciphertext
       t.boolean :alive, default: true, null: false
+      t.boolean :detonated, default: false, null: false
       t.integer :checkin_interval, default: 0, null: false
       t.integer :max_missed_checks, default: 5, null: false
       t.integer :missed_checks, default: 0, null: false

@@ -1,0 +1,20 @@
+<head>
+<html>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Someone has sent you sensitive data with Detonate</h1>
+    <p>
+      <b>"<%= @release.switch.user.email %>"</b> has failed to checkin and requested that we send you this information as a result
+    </p>
+    <p>
+      Note: <%= link_to 'Detonate App', 'https://detonateapp.com' %> is not aware of what information is contained below and not responsible for its contents
+    </p>
+    <p>
+      <b>The information is below: </b>
+    </p>
+    <pre>
+      <%= @release.switch.content %>
+    </pre>
+  </body>
+</html>

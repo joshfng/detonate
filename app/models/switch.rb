@@ -3,8 +3,8 @@
 class Switch < ApplicationRecord
   belongs_to :user
 
-  has_many :checkins, dependent: destroy
-  has_many :releases, dependent: destroy
+  has_many :checkins, dependent: :destroy
+  has_many :releases, dependent: :destroy
 
   encrypts :name, :content
 

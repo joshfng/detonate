@@ -232,6 +232,7 @@ GEM
       sprockets (>= 3.0.0)
     thor (1.1.0)
     tilt (2.0.10)
+    timecop (0.9.4)
     turbolinks (5.2.1)
       turbolinks-source (~> 5.2)
     turbolinks-source (5.2.0)
@@ -281,6 +282,7 @@ DEPENDENCIES
   rubocop-rspec
   sass-rails (>= 6)
   spring
+  timecop
   turbolinks (~> 5)
   web-console (>= 4.1.0)
   webpacker (~> 5.0)
