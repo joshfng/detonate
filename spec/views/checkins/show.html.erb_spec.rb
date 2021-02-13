@@ -6,9 +6,8 @@ RSpec.describe 'checkins/show', type: :view do
   before do
     @checkin = assign(:checkin, Checkin.create!(
                                   switch: nil,
-                                  checking_type: 2,
-                                  checkin_address: 'MyText',
-                                  checkin_confirmed: false
+                                  checkin_type: 2,
+                                  checkin_address: 'MyText'
                                 ))
   end
 
@@ -17,6 +16,5 @@ RSpec.describe 'checkins/show', type: :view do
     expect(rendered).to match(//)
     expect(rendered).to match(/2/)
     expect(rendered).to match(/MyText/)
-    expect(rendered).to match(/false/)
   end
 end

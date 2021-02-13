@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_13_022704) do
+ActiveRecord::Schema.define(version: 2021_02_13_182106) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -20,7 +20,6 @@ ActiveRecord::Schema.define(version: 2021_02_13_022704) do
     t.uuid "switch_id", null: false
     t.integer "checkin_type", default: 0, null: false
     t.text "checkin_address_ciphertext"
-    t.boolean "checkin_confirmed", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["switch_id"], name: "index_checkins_on_switch_id"
@@ -41,12 +40,20 @@ ActiveRecord::Schema.define(version: 2021_02_13_022704) do
     t.text "name_ciphertext", null: false
     t.text "content_ciphertext"
     t.boolean "alive", default: true, null: false
+    t.boolean "detonated", default: false, null: false
     t.integer "checkin_interval", default: 0, null: false
     t.integer "max_missed_checks", default: 5, null: false
     t.integer "missed_checks", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_switches_on_user_id"
+  end
+
+  create_table "user_checkins", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "checkin_id", null: false
+    t.boolean "checkin_confirmed", default: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|

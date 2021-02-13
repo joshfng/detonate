@@ -7,15 +7,13 @@ RSpec.describe 'checkins/index', type: :view do
     assign(:checkins, [
              Checkin.create!(
                switch: nil,
-               checking_type: 2,
-               checkin_address: 'MyText',
-               checkin_confirmed: false
+               checkin_type: 2,
+               checkin_address: 'MyText'
              ),
              Checkin.create!(
                switch: nil,
-               checking_type: 2,
-               checkin_address: 'MyText',
-               checkin_confirmed: false
+               checkin_type: 2,
+               checkin_address: 'MyText'
              )
            ])
   end
@@ -25,6 +23,5 @@ RSpec.describe 'checkins/index', type: :view do
     assert_select 'tr>td', text: nil.to_s, count: 2
     assert_select 'tr>td', text: 2.to_s, count: 2
     assert_select 'tr>td', text: 'MyText'.to_s, count: 2
-    assert_select 'tr>td', text: false.to_s, count: 2
   end
 end
