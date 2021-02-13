@@ -1,0 +1,32 @@
+<%= form_with(model: checkin) do |form| %>
+  <% if checkin.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(checkin.errors.count, "error") %> prohibited this checkin from being saved:</h2>
+
+      <ul>
+        <% checkin.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :switch_id %>
+    <%= form.text_field :switch_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :checkin_type %>
+    <%= form.text_field :checkin_type %>
+  </div>
+
+  <div class="field">
+    <%= form.label :checkin_address %>
+    <%= form.text_area :checkin_address %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -80,10 +80,10 @@ Rails.application.configure do
   config.action_mailer.perform_deliveries = true
 
   config.action_controller.default_url_options = {
-    host: 'localhost:3000'
+    host: 'localhost:5000'
   }
 
   config.action_mailer.default_url_options = {
-    host: 'localhost:3000'
+    host: 'localhost:5000'
   }
 end

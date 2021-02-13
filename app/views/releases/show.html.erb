@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Switch:</strong>
+  <%= @release.switch_id %>
+</p>
+
+<p>
+  <strong>Release type:</strong>
+  <%= @release.release_type %>
+</p>
+
+<p>
+  <strong>Release address ciphertext:</strong>
+  <%= @release.release_address_ciphertext %>
+</p>
+
+<p>
+  <strong>Release sent:</strong>
+  <%= @release.release_sent %>
+</p>
+
+<%= link_to 'Edit', edit_release_path(@release) %> |
+<%= link_to 'Back', releases_path %>
