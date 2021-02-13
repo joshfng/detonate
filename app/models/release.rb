@@ -6,4 +6,6 @@ class Release < ApplicationRecord
   enum release_type: { email: 0 }
 
   encrypts :release_address
+
+  # validate switch_id is owned by user
 end

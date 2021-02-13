@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  get '/user-checkins/:id', to: 'user_checkins#checkin'
+  get '/heartbeats/:id', to: 'heartbeat#heartbeat'
 
   resources :switches do
-    resources :checkins
+    resources :heartbeat_destinations
     resources :releases
   end
   devise_for :users

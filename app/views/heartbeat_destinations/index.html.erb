@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Heartbeat Destination</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Switch</th>
+      <th>Heartbeat Destination Type</th>
+      <th>Heartbeat Destination Address</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @heartbeat_destinations.each do |heartbeat_destination| %>
+      <tr>
+        <td><%= link_to heartbeat_destination.switch.id, heartbeat_destination.switch %></td>
+        <td><%= heartbeat_destination.heartbeat_destination_type %></td>
+        <td><%= heartbeat_destination.heartbeat_destination_address_ciphertext %></td>
+        <td><%= link_to 'Show', switch_heartbeat_destination_path(switch_id: heartbeat_destination.switch.id, id: heartbeat_destination.id) %></td>
+        <td><%= link_to 'Edit', edit_switch_heartbeat_destination_path(switch_id: heartbeat_destination.switch.id, id: heartbeat_destination.id) %></td>
+        <td><%= link_to 'Destroy', switch_heartbeat_destination_path(switch_id: heartbeat_destination.switch.id, id: heartbeat_destination.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Heartbeat Destination', new_switch_heartbeat_destination_path(switch_id: @switch.id) %>

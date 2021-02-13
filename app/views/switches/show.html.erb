@@ -16,18 +16,18 @@
 </p>
 
 <p>
-  <strong>Checkin interval:</strong>
-  <%= @switch.checkin_interval %>
+  <strong>Heartbeat interval:</strong>
+  <%= @switch.heartbeat_interval %>
 </p>
 
 <p>
-  <strong>Max missed checks:</strong>
-  <%= @switch.max_missed_checks %>
+  <strong>Max missed heartbeats:</strong>
+  <%= @switch.max_missed_heartbeats %>
 </p>
 
 <p>
-  <strong>Missed checks:</strong>
-  <%= @switch.missed_checks %>
+  <strong>Missed heartbeat:</strong>
+  <%= @switch.missed_heartbeats %>
 </p>
 
 <%= link_to 'Edit', edit_switch_path(@switch) %> |

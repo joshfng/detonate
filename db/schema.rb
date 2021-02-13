@@ -16,13 +16,21 @@ ActiveRecord::Schema.define(version: 2021_02_13_182106) do
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
 
-  create_table "checkins", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+  create_table "heartbeat_destinations", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "switch_id", null: false
-    t.integer "checkin_type", default: 0, null: false
-    t.text "checkin_address_ciphertext"
+    t.integer "heartbeat_destination_type", default: 0, null: false
+    t.text "heartbeat_destination_address_ciphertext"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["switch_id"], name: "index_checkins_on_switch_id"
+    t.index ["switch_id"], name: "index_heartbeat_destinations_on_switch_id"
+  end
+
+  create_table "heartbeats", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "heartbeat_destination_id", null: false
+    t.boolean "heartbeat_confirmed", default: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["heartbeat_destination_id"], name: "index_heartbeats_on_heartbeat_destination_id"
   end
 
   create_table "releases", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -41,19 +49,12 @@ ActiveRecord::Schema.define(version: 2021_02_13_182106) do
     t.text "content_ciphertext"
     t.boolean "alive", default: true, null: false
     t.boolean "detonated", default: false, null: false
-    t.integer "checkin_interval", default: 0, null: false
-    t.integer "max_missed_checks", default: 5, null: false
-    t.integer "missed_checks", default: 0, null: false
+    t.integer "heartbeat_interval", default: 0, null: false
+    t.integer "max_missed_heartbeats", default: 5, null: false
+    t.integer "missed_heartbeats", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_switches_on_user_id"
-  end
-
-  create_table "user_checkins", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.uuid "checkin_id", null: false
-    t.boolean "checkin_confirmed", default: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|

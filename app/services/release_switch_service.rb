@@ -12,10 +12,10 @@ class ReleaseSwitchService < ApplicationService
   end
 
   def confirm_switch_should_be_released
-    missed_checks = switch.missed_checks
-    max_missed_checks = switch.max_missed_checks
+    missed_heartbeats = switch.missed_heartbeats
+    max_missed_heartbeats = switch.max_missed_heartbeats
 
-    raise "Tried to release switch #{switch.id} prematurely" if missed_checks < max_missed_checks
+    raise "Tried to release switch #{switch.id} prematurely" if missed_heartbeats < max_missed_heartbeats
 
     switch.update(alive: false)
   end

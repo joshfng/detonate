@@ -1,0 +1,27 @@
+<%= form_with(model: heartbeat_destination) do |form| %>
+  <% if heartbeat_destination.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(heartbeat_destination.errors.count, "error") %> prohibited this heartbeat destination from being saved:</h2>
+
+      <ul>
+        <% heartbeat_destination.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :heartbeat_destination_type %>
+    <%= form.text_field :heartbeat_destination_type %>
+  </div>
+
+  <div class="field">
+    <%= form.label :heartbeat_destination_address %>
+    <%= form.text_area :heartbeat_destination_address %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Switch:</strong>
+  <%= @heartbeat_destination.switch_id %>
+</p>
+
+<p>
+  <strong>Heartbeat Destination Type:</strong>
+  <%= @heartbeat_destination.heartbeat_destination_type %>
+</p>
+
+<p>
+  <strong>Heartbeat Destination Address:</strong>
+  <%= @heartbeat_destination.heartbeat_destination_address_ciphertext %>
+</p>
+
+<%= link_to 'Edit', edit_heartbeat_destination_path(@heartbeat_destination) %> |
+<%= link_to 'Back', heartbeat_destinations_path %>
