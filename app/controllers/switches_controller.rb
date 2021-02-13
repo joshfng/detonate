@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class SwitchesController < ApplicationController
   before_action :set_switch, only: %i[show edit update destroy]
 
@@ -63,6 +65,7 @@ class SwitchesController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def switch_params
-    params.require(:switch).permit(:name, :content, :checkin_interval, :max_missed_checks, :missed_checks, :checkin_window)
+    params.require(:switch).permit(:name, :content, :checkin_interval, :max_missed_checks, :missed_checks,
+                                   :checkin_window)
   end
 end

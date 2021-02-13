@@ -1,0 +1,11 @@
+AllCops:
+  Exclude:
+    - 'db/**/*'
+    - 'config/**/*'
+    - 'node_modules/**/*'
+    - 'script/**/*'
+    - 'bin/{rails,rake,bundle}'
+    - !ruby/regexp /old_and_unused\.rb$/
+
+Style/Documentation:
+  Enabled: false
