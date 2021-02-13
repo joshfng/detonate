@@ -14,9 +14,7 @@ require 'rails_helper'
 # of tools you can use to make these specs even more expressive, but we're
 # sticking to rails and rspec-rails APIs to keep things simple and stable.
 
-RSpec.describe '/checkins', type: :request do
-  # Checkin. As you add validations to Checkin, be sure to
-  # adjust the attributes here as well.
+RSpec.describe '/heartbeat_destinations', type: :request do
   let(:valid_attributes) do
     skip('Add a hash of attributes valid for your model')
   end
@@ -27,58 +25,58 @@ RSpec.describe '/checkins', type: :request do
 
   describe 'GET /index' do
     it 'renders a successful response' do
-      Checkin.create! valid_attributes
-      get checkins_url
+      HeartbeatDestination.create! valid_attributes
+      get heartbeat_destinations_url
       expect(response).to be_successful
     end
   end
 
   describe 'GET /show' do
     it 'renders a successful response' do
-      checkin = Checkin.create! valid_attributes
-      get checkin_url(checkin)
+      heartbeat_destination = HeartbeatDestination.create! valid_attributes
+      get heartbeat_destination_url(heartbeat_destination)
       expect(response).to be_successful
     end
   end
 
   describe 'GET /new' do
     it 'renders a successful response' do
-      get new_checkin_url
+      get new_heartbeat_destination_url
       expect(response).to be_successful
     end
   end
 
   describe 'GET /edit' do
     it 'render a successful response' do
-      checkin = Checkin.create! valid_attributes
-      get edit_checkin_url(checkin)
+      heartbeat_destination = HeartbeatDestination.create! valid_attributes
+      get edit_heartbeat_destination_url(heartbeat_destination)
       expect(response).to be_successful
     end
   end
 
   describe 'POST /create' do
     context 'with valid parameters' do
-      it 'creates a new Checkin' do
+      it 'creates a new heartbeat_destination' do
         expect do
-          post checkins_url, params: { checkin: valid_attributes }
-        end.to change(Checkin, :count).by(1)
+          post heartbeat_destinations_url, params: { heartbeat_destination: valid_attributes }
+        end.to change(HeartbeatDestination, :count).by(1)
       end
 
-      it 'redirects to the created checkin' do
-        post checkins_url, params: { checkin: valid_attributes }
-        expect(response).to redirect_to(checkin_url(Checkin.last))
+      it 'redirects to the created heartbeat_destination' do
+        post heartbeat_destinations_url, params: { heartbeat_destination: valid_attributes }
+        expect(response).to redirect_to(heartbeat_destination_url(HeartbeatDestination.last))
       end
     end
 
     context 'with invalid parameters' do
-      it 'does not create a new Checkin' do
+      it 'does not create a new heartbeat_destination' do
         expect do
-          post checkins_url, params: { checkin: invalid_attributes }
-        end.to change(Checkin, :count).by(0)
+          post heartbeat_destinations_url, params: { heartbeat_destination: invalid_attributes }
+        end.to change(HeartbeatDestination, :count).by(0)
       end
 
       it "renders a successful response (i.e. to display the 'new' template)" do
-        post checkins_url, params: { checkin: invalid_attributes }
+        post heartbeat_destinations_url, params: { heartbeat_destination: invalid_attributes }
         expect(response).to be_successful
       end
     end
@@ -90,42 +88,42 @@ RSpec.describe '/checkins', type: :request do
         skip('Add a hash of attributes valid for your model')
       end
 
-      it 'updates the requested checkin' do
-        checkin = Checkin.create! valid_attributes
-        patch checkin_url(checkin), params: { checkin: new_attributes }
-        checkin.reload
+      it 'updates the requested heartbeat_destination' do
+        heartbeat_destination = HeartbeatDestination.create! valid_attributes
+        patch heartbeat_destination_url(heartbeat_destination), params: { heartbeat_destination: new_attributes }
+        heartbeat_destination.reload
         skip('Add assertions for updated state')
       end
 
-      it 'redirects to the checkin' do
-        checkin = Checkin.create! valid_attributes
-        patch checkin_url(checkin), params: { checkin: new_attributes }
-        checkin.reload
-        expect(response).to redirect_to(checkin_url(checkin))
+      it 'redirects to the heartbeat_destination' do
+        heartbeat_destination = HeartbeatDestination.create! valid_attributes
+        patch heartbeat_destination_url(heartbeat_destination), params: { heartbeat_destination: new_attributes }
+        heartbeat_destination.reload
+        expect(response).to redirect_to(heartbeat_destination_url(heartbeat_destination))
       end
     end
 
     context 'with invalid parameters' do
       it "renders a successful response (i.e. to display the 'edit' template)" do
-        checkin = Checkin.create! valid_attributes
-        patch checkin_url(checkin), params: { checkin: invalid_attributes }
+        heartbeat_destination = HeartbeatDestination.create! valid_attributes
+        patch heartbeat_destination_url(heartbeat_destination), params: { heartbeat_destination: invalid_attributes }
         expect(response).to be_successful
       end
     end
   end
 
   describe 'DELETE /destroy' do
-    it 'destroys the requested checkin' do
-      checkin = Checkin.create! valid_attributes
+    it 'destroys the requested heartbeat_destination' do
+      heartbeat_destination = HeartbeatDestination.create! valid_attributes
       expect do
-        delete checkin_url(checkin)
-      end.to change(Checkin, :count).by(-1)
+        delete heartbeat_destination_url(heartbeat_destination)
+      end.to change(HeartbeatDestination, :count).by(-1)
     end
 
-    it 'redirects to the checkins list' do
-      checkin = Checkin.create! valid_attributes
-      delete checkin_url(checkin)
-      expect(response).to redirect_to(checkins_url)
+    it 'redirects to the heartbeat_destination list' do
+      heartbeat_destination = HeartbeatDestination.create! valid_attributes
+      delete heartbeat_destination_url(heartbeat_destination)
+      expect(response).to redirect_to(heartbeat_destinations_url)
     end
   end
 end

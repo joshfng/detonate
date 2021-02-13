@@ -1,0 +1,20 @@
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Heartbeat Attempt</h1>
+    <p>
+      This is an attempt to check your heartbeat for your switch named <b>"<%= @heartbeat.heartbeat_destination.switch.name %>"</b>
+    </p>
+    <p>
+      To confirm you are alive and well, just follow this link: <%= link_to @url, @url %>
+    </p>
+    <p>
+      Failure to confirm your heartbeat with this switch at the choosen interval "<%= @heartbeat.heartbeat_destination.switch.heartbeat_interval %>" <%= @heartbeat.heartbeat_destination.switch.max_missed_heartbeats %> or more times will result in your switch's information being sent out to the releases you have configured.
+    </p>
+    <p>
+      <b>You have missed <%= @heartbeat.heartbeat_destination.switch.missed_heartbeats %> of <%= @heartbeat.heartbeat_destination.switch.max_missed_heartbeats %></b>
+    </p>
+  </body>
+</html>

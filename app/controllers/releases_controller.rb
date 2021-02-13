@@ -4,25 +4,20 @@ class ReleasesController < ApplicationController
   before_action :set_switch
   before_action :set_release, only: %i[show edit update destroy]
 
-  # GET /releases or /releases.json
   def index
-    @releases = Release.all
+    @releases = @switch.releases.all
   end
 
-  # GET /releases/1 or /releases/1.json
   def show; end
 
-  # GET /releases/new
   def new
-    @release = Release.new
+    @release = @switch.releases.new
   end
 
-  # GET /releases/1/edit
   def edit; end
 
-  # POST /releases or /releases.json
   def create
-    @release = Release.new(release_params)
+    @release = @switch.releases.new(release_params)
 
     respond_to do |format|
       if @release.save
@@ -35,7 +30,6 @@ class ReleasesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /releases/1 or /releases/1.json
   def update
     respond_to do |format|
       if @release.update(release_params)
@@ -48,7 +42,6 @@ class ReleasesController < ApplicationController
     end
   end
 
-  # DELETE /releases/1 or /releases/1.json
   def destroy
     @release.destroy
     respond_to do |format|
@@ -63,12 +56,10 @@ class ReleasesController < ApplicationController
     @switch = current_user.switches.find(params[:switch_id])
   end
 
-  # Use callbacks to share common setup or constraints between actions.
   def set_release
-    @release = Release.find(params[:id])
+    @release = @switch.releases.find(params[:id])
   end
 
-  # Only allow a list of trusted parameters through.
   def release_params
     params.require(:release).permit(:switch_id, :release_type, :release_address)
   end
