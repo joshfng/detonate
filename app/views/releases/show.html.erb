@@ -2,23 +2,18 @@
 
 <p>
   <strong>Switch:</strong>
-  <%= @release.switch_id %>
+  <%= @switch_destination.switch_id %>
 </p>
 
 <p>
-  <strong>Release type:</strong>
-  <%= @release.release_type %>
+  <strong>switch_destination type:</strong>
+  <%= @switch_destination.switch_destination_type %>
 </p>
 
 <p>
-  <strong>Release address ciphertext:</strong>
-  <%= @release.release_address_ciphertext %>
+  <strong>switch_destination address ciphertext:</strong>
+  <%= @switch_destination.switch_destination_address_ciphertext %>
 </p>
 
-<p>
-  <strong>Release sent:</strong>
-  <%= @release.release_sent %>
-</p>
-
-<%= link_to 'Edit', edit_release_path(@release) %> |
-<%= link_to 'Back', releases_path %>
+<%= link_to 'Edit', edit_switch_destination_path(@switch_destination) %> |
+<%= link_to 'Back', switch_destinations_path %>

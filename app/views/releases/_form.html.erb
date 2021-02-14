@@ -1,10 +1,10 @@
-<%= form_with(model: release) do |form| %>
-  <% if release.errors.any? %>
+<%= form_with(model: switch_destination) do |form| %>
+  <% if switch_destination.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(release.errors.count, "error") %> prohibited this release from being saved:</h2>
+      <h2><%= pluralize(switch_destination.errors.count, "error") %> prohibited this switch_destination from being saved:</h2>
 
       <ul>
-        <% release.errors.each do |error| %>
+        <% switch_destination.errors.each do |error| %>
           <li><%= error.full_message %></li>
         <% end %>
       </ul>
@@ -17,13 +17,13 @@
   </div>
 
   <div class="field">
-    <%= form.label :release_type %>
-    <%= form.text_field :release_type %>
+    <%= form.label :switch_destination_type %>
+    <%= form.text_field :switch_destination_type %>
   </div>
 
   <div class="field">
-    <%= form.label :release_address %>
-    <%= form.text_area :release_address %>
+    <%= form.label :switch_destination_address %>
+    <%= form.text_area :switch_destination_address %>
   </div>
 
   <div class="actions">
