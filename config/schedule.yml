@@ -1,0 +1,3 @@
+send_heartbeats:
+  cron: "0 1 * * *"
+  class: "ScheduleSwitchHeartbeatsWorker"

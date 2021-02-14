@@ -4,6 +4,8 @@ class HeartbeatDestinationsController < ApplicationController
   before_action :set_switch
   before_action :set_heartbeat_destination, only: %i[show edit update destroy]
 
+  # TODO: validate switch is owned by current_user
+
   def index
     @heartbeat_destinations = @switch.heartbeat_destinations.all
   end

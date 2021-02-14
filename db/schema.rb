@@ -26,11 +26,13 @@ ActiveRecord::Schema.define(version: 2021_02_13_182106) do
   end
 
   create_table "heartbeats", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "switch_id", null: false
     t.uuid "heartbeat_destination_id", null: false
     t.boolean "heartbeat_confirmed", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["heartbeat_destination_id"], name: "index_heartbeats_on_heartbeat_destination_id"
+    t.index ["switch_id"], name: "index_heartbeats_on_switch_id"
   end
 
   create_table "switch_destinations", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|

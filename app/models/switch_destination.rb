@@ -7,5 +7,7 @@ class SwitchDestination < ApplicationRecord
 
   encrypts :switch_destination_address
 
-  # validate switch_id is owned by user
+  validates :switch, presence: true
+  validates :switch_destination_type, inclusion: { in: SwitchDestination.switch_destination_types }
+  validates :switch_destination_address, presence: true
 end

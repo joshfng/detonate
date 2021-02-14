@@ -9,5 +9,10 @@ Rails.application.routes.draw do
   end
   devise_for :users
 
+  # TODO: lock down to admin
+  require 'sidekiq/web'
+  require 'sidekiq/cron/web'
+  mount Sidekiq::Web => '/sidekiq'
+
   root to: 'home#index'
 end
