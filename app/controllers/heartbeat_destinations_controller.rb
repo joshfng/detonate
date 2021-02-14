@@ -5,20 +5,19 @@ class HeartbeatDestinationsController < ApplicationController
   before_action :set_heartbeat_destination, only: %i[show edit update destroy]
 
   def index
-    @heartbeat_destinations = current_user.switches.find(params[:switch_id]).heartbeat_destinations.all
+    @heartbeat_destinations = @switch.heartbeat_destinations.all
   end
 
   def show; end
 
   def new
-    @heartbeat_destination = current_user.switches.find(params[:switch_id]).heartbeat_destinations.new
+    @heartbeat_destination = @switch.heartbeat_destinations.new
   end
 
   def edit; end
 
   def create
-    @heartbeat_destination = current_user.switches.find(params[:switch_id])
-                                         .heartbeat_destinations.new(heartbeat_destination_params)
+    @heartbeat_destination = @switch.heartbeat_destinations.new(heartbeat_destination_params)
 
     respond_to do |format|
       if @heartbeat_destination.save
@@ -64,6 +63,6 @@ class HeartbeatDestinationsController < ApplicationController
   end
 
   def heartbeat_destination_params
-    params.require(:heartbeat_destination).permit(:hearbeat_type, :heartbeat_address)
+    params.require(:heartbeat_destination).permit(:hearbeat_type, :heartbeat_destination_address)
   end
 end

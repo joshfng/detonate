@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
 class HeartbeatsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:heartbeat]
+  skip_before_action :authenticate_user!, only: [:receive_heartbeat]
 
-  def heartbeat
+  def receive_heartbeat
     @heartbeat = Heartbeat.find(params[:id])
 
-    HearbeatService.perform(@heartbeat) unless @heartbeat.heartbeat_confirmed?
+    ReceiveHeartbeatService.perform(@heartbeat)
   end
 end

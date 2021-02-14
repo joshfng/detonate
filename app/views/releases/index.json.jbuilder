@@ -1,3 +1,3 @@
 # frozen_string_literal: true
 
-json.array! @releases, partial: 'releases/release', as: :release
+json.array! @switch_destinations, partial: 'switch_destinations/switch_destination', as: :switch_destination

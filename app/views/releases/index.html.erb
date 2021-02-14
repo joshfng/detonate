@@ -1,28 +1,26 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Releases</h1>
+<h1>switch_destination</h1>
 
 <table>
   <thead>
     <tr>
       <th>Switch</th>
-      <th>Release type</th>
-      <th>Release address ciphertext</th>
-      <th>Release sent</th>
+      <th>switch_destination type</th>
+      <th>switch_destination address ciphertext</th>
       <th colspan="3"></th>
     </tr>
   </thead>
 
   <tbody>
-    <% @releases.each do |release| %>
+    <% @switch_destinations.each do |reswitch_destinationlease| %>
       <tr>
-        <td><%= link_to release.switch.id, release.switch %></td>
-        <td><%= release.release_type %></td>
-        <td><%= release.release_address_ciphertext %></td>
-        <td><%= release.release_sent %></td>
-        <td><%= link_to 'Show', switch_release_path(switch_id: release.switch.id, id: release.id) %></td>
-        <td><%= link_to 'Edit', edit_switch_release_path(switch_id: release.switch.id, id: release.id) %></td>
-        <td><%= link_to 'Destroy', switch_release_path(switch_id: release.switch.id, id: release.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to switch_destination.switch.id, switch_destination.switch %></td>
+        <td><%= switch_destination.switch_destination_type %></td>
+        <td><%= switch_destination.switch_destination_address_ciphertext %></td>
+        <td><%= link_to 'Show', switch_switch_destination_path(switch_id: switch_destination.switch.id, id: switch_destination.id) %></td>
+        <td><%= link_to 'Edit', edit_switch_switch_destination_path(switch_id: switch_destination.switch.id, id: switch_destination.id) %></td>
+        <td><%= link_to 'Destroy', switch_switch_destination_path(switch_id: switch_destination.switch.id, id: switch_destination.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -30,4 +28,4 @@
 
 <br>
 
-<%= link_to 'New Relase', new_switch_release_path(switch_id: @switch.id) %>
+<%= link_to 'New Relase', new_switch_switch_destination_path(switch_id: @switch.id) %>

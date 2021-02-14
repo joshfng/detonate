@@ -33,25 +33,23 @@ ActiveRecord::Schema.define(version: 2021_02_13_182106) do
     t.index ["heartbeat_destination_id"], name: "index_heartbeats_on_heartbeat_destination_id"
   end
 
-  create_table "releases", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+  create_table "switch_destinations", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "switch_id", null: false
-    t.integer "release_type", default: 0, null: false
-    t.text "release_address_ciphertext"
-    t.boolean "release_sent", default: false, null: false
+    t.integer "switch_destination_type", default: 0, null: false
+    t.text "switch_destination_address_ciphertext"
+    t.boolean "switch_destination_notified", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["switch_id"], name: "index_releases_on_switch_id"
+    t.index ["switch_id"], name: "index_switch_destinations_on_switch_id"
   end
 
   create_table "switches", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "user_id", null: false
     t.text "name_ciphertext", null: false
     t.text "content_ciphertext"
-    t.boolean "alive", default: true, null: false
     t.boolean "detonated", default: false, null: false
     t.integer "heartbeat_interval", default: 0, null: false
     t.integer "max_missed_heartbeats", default: 5, null: false
-    t.integer "missed_heartbeats", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_switches_on_user_id"

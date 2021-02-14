@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  get '/heartbeats/:id', to: 'heartbeat#heartbeat'
+  get '/heartbeats/:id', to: 'heartbeats#receive_heartbeat', as: :heartbeat_receive
 
   resources :switches do
     resources :heartbeat_destinations
-    resources :releases
+    resources :switch_destination
   end
   devise_for :users
 

@@ -5,9 +5,9 @@ class HeartbeatDestination < ApplicationRecord
 
   has_many :heartbeats, dependent: :destroy
 
-  enum heartbeat_type: { email: 0 }
+  enum heartbeat_destination_type: { email: 0 }
 
-  encrypts :heartbeat_address
+  encrypts :heartbeat_destination_address
 
   # validate switch_id is owned by user
 end
