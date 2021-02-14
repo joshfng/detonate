@@ -9,5 +9,7 @@ class HeartbeatDestination < ApplicationRecord
 
   encrypts :heartbeat_destination_address
 
-  # validate switch_id is owned by user
+  validates :switch, presence: true
+  validates :heartbeat_destination_type, inclusion: { in: HeartbeatDestination.heartbeat_destination_types }
+  validates :heartbeat_destination_address, presence: true
 end

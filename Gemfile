@@ -24,13 +24,15 @@ gem 'devise'
 gem 'blind_index'
 gem 'lockbox'
 
+# Background workers
+gem 'sidekiq'
+gem 'sidekiq-cron'
+
 gem 'bootsnap', '>= 1.4.4', require: false
 
 group :development, :test do
   gem 'byebug'
-  gem 'factory_bot_rails'
   gem 'rspec-rails'
-  gem 'timecop'
 end
 
 group :development do
@@ -44,4 +46,10 @@ group :development do
   gem 'rubocop-rspec', require: false
   gem 'spring'
   gem 'web-console', '>= 4.1.0'
+end
+
+group :test do
+  gem 'factory_bot_rails'
+  gem 'simplecov', require: false
+  gem 'timecop'
 end

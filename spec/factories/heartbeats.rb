@@ -2,7 +2,8 @@
 
 FactoryBot.define do
   factory :heartbeat do
-    heartbeat_destination_id { 'MyText' }
+    association :switch
+    association :heartbeat_destination
     heartbeat_confirmed { false }
   end
 end

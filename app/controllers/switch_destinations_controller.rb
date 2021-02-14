@@ -4,6 +4,8 @@ class SwitchDestinationsController < ApplicationController
   before_action :set_switch
   before_action :set_switch_destination, only: %i[show edit update destroy]
 
+  # TODO: validate switch is owned by current_user
+
   def index
     @switch_destinations = @switch.switch_destinations.all
   end

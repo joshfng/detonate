@@ -9,4 +9,7 @@ class User < ApplicationRecord
 
   encrypts :email, :unconfirmed_email
   blind_index :email, :unconfirmed_email
+
+  validates :email, presence: true
+  validates :email, uniqueness: true
 end

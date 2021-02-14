@@ -2,8 +2,12 @@
 
 class ReceiveHeartbeatService < ApplicationService
   def perform(heartbeat)
-    return if heartbeat.heartbeat_confirmed?
+    return false if heartbeat.heartbeat_confirmed?
+    return false if heartbeat.switch.dead?
+    return false if heartbeat.switch.detonated?
 
-    heartbeat.update(heartbeat_confirmed: true)
+    heartbeat.switch.heartbeats.update_all(heartbeat_confirmed: true)
+
+    true
   end
 end

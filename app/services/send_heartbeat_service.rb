@@ -14,6 +14,8 @@ class SendHeartbeatService < ApplicationService
   end
 
   def heartbeat_due?
+    return false if switch.detonated?
+
     case switch.heartbeat_interval
     when 'daily'
       true
@@ -28,16 +30,16 @@ class SendHeartbeatService < ApplicationService
     if switch.alive?
       send_switch_heartbeat(heartbeat_destination)
     else
-      SwitchDetonationService.perform(switch: switch)
+      SwitchDetonationWorker.perform_async(switch.id)
     end
   end
 
   def send_switch_heartbeat(heartbeat_destination)
-    heartbeat = heartbeat_destination.heartbeats.create!
+    heartbeat = heartbeat_destination.heartbeats.create!(switch: switch)
 
     case heartbeat_destination.heartbeat_destination_type
     when 'email'
-      HeartbeatMailer.with(heartbeat: heartbeat).send_heartbeat.deliver_now
+      HeartbeatMailer.with(heartbeat: heartbeat).send_heartbeat.deliver_later
     end
   end
 end
