@@ -6,12 +6,12 @@ require:
 AllCops:
   NewCops: enable
   Exclude:
-    - 'db/**/*'
-    - 'config/**/*'
-    - 'node_modules/**/*'
-    - 'script/**/*'
-    - 'vendor/**/*'
-    - 'bin/{rails,rake,bundle}'
+    - "db/**/*"
+    - "config/**/*"
+    - "node_modules/**/*"
+    - "script/**/*"
+    - "vendor/**/*"
+    - "bin/{rails,rake,bundle}"
     - !ruby/regexp /old_and_unused\.rb$/
 
 Style/Documentation:
