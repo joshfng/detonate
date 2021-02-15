@@ -59,9 +59,9 @@ jobs:
       postgres:
         image: postgres:12
         env:
-          POSTGRES_USER: postgres
+          POSTGRES_USER: detonate
           POSTGRES_DB: detonate_test
-          POSTGRES_PASSWORD: ""
+          POSTGRES_PASSWORD: detonate
         ports: ["5432:5432"]
 
     steps:
@@ -103,10 +103,12 @@ jobs:
       - name: Setup test database
         env:
           RAILS_ENV: test
-          PGHOST: localhost
-          PGUSER: detonate
+          DATABASE_URL: postgres://detonate:detonate@localhost/detonate_test
         run: |
           bin/rails db:setup
 
       - name: Run tests
+        env:
+          RAILS_ENV: test
+          DATABASE_URL: postgres://detonate:detonate@localhost/detonate_test
         run: bundle exec rspec
