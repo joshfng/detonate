@@ -3,8 +3,8 @@
 class ApplicationService
   # include Rails.application.routes.url_helpers
 
-  def self.perform(*args)
-    new.perform(*args)
+  def self.perform(...)
+    new.perform(...)
   end
 
   # def default_url_options
