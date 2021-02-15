@@ -6,7 +6,7 @@ class ReceiveHeartbeatService < ApplicationService
     return false if heartbeat.switch.dead?
     return false if heartbeat.switch.detonated?
 
-    heartbeat.switch.heartbeats.update_all(heartbeat_confirmed: true)
+    heartbeat.switch.heartbeats.update_all(heartbeat_confirmed: true) # rubocop:disable Rails/SkipsModelValidations
 
     true
   end

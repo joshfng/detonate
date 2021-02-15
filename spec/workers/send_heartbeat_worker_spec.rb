@@ -6,7 +6,7 @@ RSpec.describe SendHeartbeatWorker, type: :service do
   it 'calls the service' do
     switch = create(:switch)
 
-    expect_any_instance_of(SendHeartbeatService).to receive(:perform)
+    expect_any_instance_of(SendHeartbeatService).to receive(:perform) # rubocop:disable RSpec/AnyInstance
 
     Sidekiq::Testing.inline! do
       described_class.perform_async(switch.id)

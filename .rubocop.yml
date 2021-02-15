@@ -4,6 +4,7 @@ require:
   - rubocop-performance
 
 AllCops:
+  NewCops: enable
   Exclude:
     - 'db/**/*'
     - 'config/**/*'
