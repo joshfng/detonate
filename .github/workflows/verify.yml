@@ -103,6 +103,7 @@ jobs:
       - name: Setup test database
         env:
           RAILS_ENV: test
+          RAILS_MASTER_KEY: ENV['RAILS_MASTER_KEY']
           DATABASE_URL: postgres://detonate:detonate@localhost/detonate_test
         run: |
           bin/rails db:setup
@@ -110,5 +111,6 @@ jobs:
       - name: Run tests
         env:
           RAILS_ENV: test
+          RAILS_MASTER_KEY: ENV['RAILS_MASTER_KEY']
           DATABASE_URL: postgres://detonate:detonate@localhost/detonate_test
         run: bundle exec rspec
