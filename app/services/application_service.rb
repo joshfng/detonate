@@ -7,8 +7,6 @@ class ApplicationService
     new.perform(*args)
   end
 
-  protected
-
   # def default_url_options
   #   Rails.application.config.action_mailer.default_url_options
   # end

@@ -23,7 +23,7 @@ RSpec.describe SwitchDetonationService, type: :service do
       create_list(:heartbeat, 10, switch: switch)
 
       Sidekiq::Testing.inline! do
-        expect_any_instance_of(SwitchDetonationMailer).to receive(:send_switch_data_to_switch_destination)
+        expect_any_instance_of(SwitchDetonationMailer).to receive(:send_switch_data_to_switch_destination) # rubocop:disable RSpec/AnyInstance
         described_class.perform(switch: switch)
       end
     end
@@ -70,7 +70,7 @@ RSpec.describe SwitchDetonationService, type: :service do
       create(:switch_destination, switch: switch)
 
       Sidekiq::Testing.inline! do
-        expect_any_instance_of(SwitchDetonationMailer).to receive(:send_switch_data_to_switch_destination)
+        expect_any_instance_of(SwitchDetonationMailer).to receive(:send_switch_data_to_switch_destination) # rubocop:disable RSpec/AnyInstance
         described_class.perform(switch: switch, force: true)
       end
     end

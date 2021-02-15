@@ -18,7 +18,7 @@ RSpec.describe SendHeartbeatService, type: :service do
     create(:heartbeat_destination, switch: switch)
 
     Sidekiq::Testing.inline! do
-      expect_any_instance_of(HeartbeatMailer).to receive(:send_heartbeat)
+      expect_any_instance_of(HeartbeatMailer).to receive(:send_heartbeat) # rubocop:disable RSpec/AnyInstance
       described_class.perform(switch)
     end
   end
@@ -29,9 +29,9 @@ RSpec.describe SendHeartbeatService, type: :service do
     create(:switch_destination, switch: switch)
     create_list(:heartbeat, 2, switch: switch, heartbeat_destination: heartbeat_destination)
 
-    expect {
+    expect do
       described_class.perform(switch)
-    }.to change(SwitchDetonationWorker.jobs, :size).by(1)
+    end.to change(SwitchDetonationWorker.jobs, :size).by(1)
   end
 
   describe 'weekly intervals' do

@@ -32,8 +32,8 @@ gem 'bootsnap', '>= 1.4.4', require: false
 
 group :development, :test do
   gem 'brakeman'
-  gem 'byebug'
   gem 'bundler-audit'
+  gem 'byebug'
   gem 'rspec-rails'
 end
 
