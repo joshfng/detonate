@@ -59,9 +59,9 @@ jobs:
       postgres:
         image: postgres:12
         env:
-          POSTGRES_USER: detonate
+          POSTGRES_USER: postgres
           POSTGRES_DB: detonate_test
-          POSTGRES_PASSWORD: detonate
+          POSTGRES_PASSWORD: ""
         ports: ["5432:5432"]
 
     steps:
