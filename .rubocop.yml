@@ -10,6 +10,7 @@ AllCops:
     - 'config/**/*'
     - 'node_modules/**/*'
     - 'script/**/*'
+    - 'vendor/**/*'
     - 'bin/{rails,rake,bundle}'
     - !ruby/regexp /old_and_unused\.rb$/
 
