@@ -47,10 +47,10 @@ jobs:
           # bin/stylelint
           # bin/prettier
           # bin/eslint
-      # - name: Run security checks
-      #   run: |
-      #     bin/bundler-audit --update
-      #     bin/brakeman -q -w2
+      - name: Run security checks
+        run: |
+          bin/bundler-audit --update
+          bin/brakeman -q -w2
 
   tests:
     name: Tests
