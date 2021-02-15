@@ -42,12 +42,16 @@ jobs:
           yarn install --pure-lockfile
 
       - name: Run linters
+        env:
+          RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
         run: |
           bundle exec rubocop --config .rubocop.yml -P
           # bin/stylelint
           # bin/prettier
           # bin/eslint
       - name: Run security checks
+        env:
+          RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
         run: |
           bundle exec bundler-audit --update
           bundle exec brakeman -q -w2
