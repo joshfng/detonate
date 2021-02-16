@@ -55,7 +55,7 @@ RSpec.describe SwitchDetonationService, type: :service do
     it 'does not raise an exception if the switch is still alive' do
       switch = create(:switch)
 
-      expect { described_class.perform(switch: switch, force: true) }.not_to raise_error(RuntimeError, /prematurely/)
+      expect { described_class.perform(switch: switch, force: true) }.not_to raise_error
     end
 
     it 'raises an exception if the switch has already detonated' do
