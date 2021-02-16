@@ -40,7 +40,7 @@ RSpec.describe HeartbeatDestination, type: :model do
     end
 
     it 'ensures a heartbeat_destination_address of type email is an email address' do
-      heartbeat_destination = build(:heartbeat_destination, heartbeat_destination_address: nil)
+      heartbeat_destination = build(:heartbeat_destination, heartbeat_destination_address: 'test')
       expect(heartbeat_destination.valid?).to eq(false)
 
       heartbeat_destination.heartbeat_destination_address = 'someone@detonateapp.com'
