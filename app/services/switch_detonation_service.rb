@@ -15,10 +15,13 @@ class SwitchDetonationService < ApplicationService
     raise "Tried to detonate switch #{switch.id} that has already detonated" if switch.detonated?
 
     switch.switch_destinations.find_each do |switch_destination|
-      SwitchDetonationMailer
-        .with(switch_destination: switch_destination)
-        .send_switch_data_to_switch_destination
-        .deliver_later
+      case switch_destination.switch_destination_type
+      when 'email'
+        SwitchDetonationMailer
+          .with(switch_destination: switch_destination)
+          .send_switch_data_to_switch_destination
+          .deliver_later
+      end
 
       switch_destination.update(switch_destination_notified: true)
     end
