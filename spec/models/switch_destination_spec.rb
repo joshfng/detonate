@@ -38,5 +38,13 @@ RSpec.describe SwitchDestination, type: :model do
       switch_destination.switch_destination_address = 'someone@detonateapp.com'
       expect(switch_destination.valid?).to eq(true)
     end
+
+    it 'ensures a switch_destination_address of type email is an email address' do
+      switch_destination = build(:switch_destination, switch_destination_address: 'test')
+      expect(switch_destination.valid?).to eq(false)
+
+      switch_destination.switch_destination_address = 'someone@detonateapp.com'
+      expect(switch_destination.valid?).to eq(true)
+    end
   end
 end
