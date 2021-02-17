@@ -1,4 +1,4 @@
-<%= form_with(model: switch_destination) do |form| %>
+<%= form_with(model: switch_destination, url: [switch_destination.switch, switch_destination]) do |form| %>
   <% if switch_destination.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(switch_destination.errors.count, "error") %> prohibited this switch_destination from being saved:</h2>
@@ -10,11 +10,6 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= form.label :switch_id %>
-    <%= form.text_area :switch_id %>
-  </div>
 
   <div class="field">
     <%= form.label :switch_destination_type %>

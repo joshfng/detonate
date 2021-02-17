@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   resources :switches do
     resources :heartbeat_destinations
-    resources :switch_destination
+    resources :switch_destinations
   end
   devise_for :users
 

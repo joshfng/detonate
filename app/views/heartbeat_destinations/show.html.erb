@@ -15,5 +15,5 @@
   <%= @heartbeat_destination.heartbeat_destination_address_ciphertext %>
 </p>
 
-<%= link_to 'Edit', edit_heartbeat_destination_path(@heartbeat_destination) %> |
-<%= link_to 'Back', heartbeat_destinations_path %>
+<%= link_to 'Edit', edit_switch_heartbeat_destination_path(switch_id: @heartbeat_destination.switch, id: @heartbeat_destination) %> |
+<%= link_to 'Back', switch_heartbeat_destinations_path(@heartbeat_destination.switch) %>

@@ -17,7 +17,7 @@
       <tr>
         <td><%= link_to heartbeat_destination.switch.id, heartbeat_destination.switch %></td>
         <td><%= heartbeat_destination.heartbeat_destination_type %></td>
-        <td><%= heartbeat_destination.heartbeat_destination_address_ciphertext %></td>
+        <td><%= truncate(heartbeat_destination.heartbeat_destination_address_ciphertext, length: 10) %></td>
         <td><%= link_to 'Show', switch_heartbeat_destination_path(switch_id: heartbeat_destination.switch.id, id: heartbeat_destination.id) %></td>
         <td><%= link_to 'Edit', edit_switch_heartbeat_destination_path(switch_id: heartbeat_destination.switch.id, id: heartbeat_destination.id) %></td>
         <td><%= link_to 'Destroy', switch_heartbeat_destination_path(switch_id: heartbeat_destination.switch.id, id: heartbeat_destination.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -28,4 +28,5 @@
 
 <br>
 
-<%= link_to 'New Heartbeat Destination', new_switch_heartbeat_destination_path(switch_id: @switch.id) %>
+<%= link_to 'New Heartbeat Destination', new_switch_heartbeat_destination_path(switch_id: @switch.id) %><br>
+<%= link_to 'Back To Switch', switches_path(@switch) %>

@@ -23,7 +23,10 @@ class HeartbeatDestinationsController < ApplicationController
 
     respond_to do |format|
       if @heartbeat_destination.save
-        format.html { redirect_to @heartbeat_destination, notice: 'Heartbeat Destination was successfully created.' }
+        format.html do
+          redirect_to [@heartbeat_destination.switch, @heartbeat_destination],
+                      notice: 'Heartbeat Destination was successfully created.'
+        end
         format.json { render :show, status: :created, location: @heartbeat_destination }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -35,7 +38,10 @@ class HeartbeatDestinationsController < ApplicationController
   def update
     respond_to do |format|
       if @heartbeat_destination.update(heartbeat_destination_params)
-        format.html { redirect_to @heartbeat_destination, notice: 'Heartbeat Destination was successfully updated.' }
+        format.html do
+          redirect_to [@heartbeat_destination.switch, @heartbeat_destination],
+                      notice: 'Heartbeat Destination was successfully updated.'
+        end
         format.json { render :show, status: :ok, location: @heartbeat_destination }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -48,7 +54,8 @@ class HeartbeatDestinationsController < ApplicationController
     @heartbeat_destination.destroy
     respond_to do |format|
       format.html do
-        redirect_to heartbeat_destinations_url, notice: 'Heartbeat Destination was successfully destroyed.'
+        redirect_to switch_heartbeat_destinations_path(@switch),
+                    notice: 'Heartbeat Destination was successfully destroyed.'
       end
       format.json { head :no_content }
     end
