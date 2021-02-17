@@ -17,7 +17,9 @@
     </header>
 
     <main role="main">
-      <%= content_for?(:content) ? yield(:content) : yield %>
+      <div class="container">
+        <%= content_for?(:content) ? yield(:content) : yield %>
+      </div>
     </main>
   </body>
 </html>

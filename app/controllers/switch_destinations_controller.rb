@@ -23,7 +23,10 @@ class SwitchDestinationsController < ApplicationController
 
     respond_to do |format|
       if @switch_destination.save
-        format.html { redirect_to @switch_destination, notice: 'Switch Destination was successfully created.' }
+        format.html do
+          redirect_to [@switch_destination.switch, @switch_destination],
+                      notice: 'Switch Destination was successfully created.'
+        end
         format.json { render :show, status: :created, location: @switch_destination }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -35,7 +38,10 @@ class SwitchDestinationsController < ApplicationController
   def update
     respond_to do |format|
       if @switch_destination.update(switch_destination_params)
-        format.html { redirect_to @switch_destination, notice: 'Switch Destination was successfully updated.' }
+        format.html do
+          redirect_to [@switch_destination.switch, @switch_destination],
+                      notice: 'Switch Destination was successfully updated.'
+        end
         format.json { render :show, status: :ok, location: @switch_destination }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -47,7 +53,9 @@ class SwitchDestinationsController < ApplicationController
   def destroy
     @switch_destination.destroy
     respond_to do |format|
-      format.html { redirect_to switch_destinations_url, notice: 'Switch Destination was successfully destroyed.' }
+      format.html do
+        redirect_to switch_switch_destinations_path(@switch), notice: 'Switch Destination was successfully destroyed.'
+      end
       format.json { head :no_content }
     end
   end

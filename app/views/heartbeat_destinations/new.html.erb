@@ -2,4 +2,4 @@
 
 <%= render 'form', heartbeat_destination: @heartbeat_destination %>
 
-<%= link_to 'Back', heartbeat_destinations_path %>
+<%= link_to 'Back', switch_heartbeat_destinations_path(@heartbeat_destination.switch) %>

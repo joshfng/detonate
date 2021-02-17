@@ -1,4 +1,4 @@
-<%= form_with(model: heartbeat_destination) do |form| %>
+<%= form_with(model: heartbeat_destination, url: [heartbeat_destination.switch, heartbeat_destination]) do |form| %>
   <% if heartbeat_destination.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(heartbeat_destination.errors.count, "error") %> prohibited this heartbeat destination from being saved:</h2>
