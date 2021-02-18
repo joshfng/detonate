@@ -5,21 +5,20 @@
 
       <h1>Switches</h1>
 
-      <table class="col-lg-12">
+      <table class="table table-dark">
         <thead>
           <tr>
-            <th>Name</th>
-            <th>Content</th>
-            <th>Heartbeat Interval</th>
-            <th>Max Missed Heartbeats</th>
-            <th colspan="3">Actions</th>
+            <th scope="col">Name</th>
+            <th scope="col">Content</th>
+            <th scope="col">Heartbeat Interval</th>
+            <th scope="col">Max Missed Heartbeats</th>
+            <th scope="col" colspan="3">Actions</th>
           </tr>
         </thead>
-
         <tbody>
           <% @current_user.switches.each do |switch| %>
             <tr>
-              <td><%= truncate(switch.name, length: 10) %></td>
+              <th scope="row"><%= truncate(switch.name, length: 10) %></th>
               <td><%= truncate(switch.content_ciphertext, length: 10) %></td>
               <td><%= switch.heartbeat_interval %></td>
               <td><%= switch.max_missed_heartbeats %></td>
@@ -33,7 +32,7 @@
 
       <br>
 
-      <%= link_to 'New Switch', new_switch_path %>
+      <%= link_to 'New Switch', new_switch_path, class: 'white btn btn-primary' %>
     </div>
   </div>
 </div>

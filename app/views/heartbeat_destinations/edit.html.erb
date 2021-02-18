@@ -1,6 +1,8 @@
-<h1>Editing Heartbeat Destination</h1>
+<div class="col-6 center">
+  <h1>Editing Heartbeat Destination</h1>
 
-<%= render 'form', heartbeat_destination: @heartbeat_destination %>
+  <%= render 'form', heartbeat_destination: @heartbeat_destination %>
 
-<%= link_to 'Show', switch_heartbeat_destination_path([@heartbeat_destination.switch, @heartbeat_destination]) %> |
-<%= link_to 'Back', switch_heartbeat_destinations_path(@heartbeat_destination.switch) %>
+  <%= link_to 'Show', switch_heartbeat_destination_path([@heartbeat_destination.switch, @heartbeat_destination]) %> |
+  <%= link_to 'Back', switch_heartbeat_destinations_path(@heartbeat_destination.switch) %>
+</div>

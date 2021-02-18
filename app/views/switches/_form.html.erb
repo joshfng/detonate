@@ -11,27 +11,28 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :name %>
-    <%= form.text_area :name %>
+    <%= form.text_field :name, class: 'form-control' %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :content %>
-    <%= form.text_area :content %>
+    <%= form.text_field :content, class: 'form-control' %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :heartbeat_interval %>
-    <%= form.text_field :heartbeat_interval %>
+    <%= form.text_field :heartbeat_interval, class: 'form-control' %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :max_missed_heartbeats %>
-    <%= form.text_field :max_missed_heartbeats %>
+    <%= form.text_field :max_missed_heartbeats, class: 'form-control' %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit "Create Switch", class: 'btn btn-primary' %>
   </div>
+
 <% end %>
