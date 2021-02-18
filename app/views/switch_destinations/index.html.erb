@@ -1,32 +1,38 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <p id="notice"><%= notice %></p>
 
-<h1>Switch Destinations</h1>
+      <h1>Switch Destinations</h1>
 
-<table class="col-lg-12">
-  <thead>
-    <tr>
-      <th>Switch</th>
-      <th>Type</th>
-      <th>Address</th>
-      <th colspan="3">Actions</th>
-    </tr>
-  </thead>
+      <table class="table table-dark">
+        <thead>
+          <tr>
+            <th scope="col">Switch</th>
+            <th scope="col">Type</th>
+            <th scope="col">Address</th>
+            <th scope="col" colspan="3">Actions</th>
+          </tr>
+        </thead>
 
-  <tbody>
-    <% @switch_destinations.each do |switch_destination| %>
-      <tr>
-        <td><%= link_to switch_destination.switch.id, switch_destination.switch %></td>
-        <td><%= switch_destination.switch_destination_type %></td>
-        <td><%= truncate(switch_destination.switch_destination_address_ciphertext, length: 10) %></td>
-        <td><%= link_to 'Show', switch_switch_destination_path(switch_id: switch_destination.switch.id, id: switch_destination.id) %></td>
-        <td><%= link_to 'Edit', edit_switch_switch_destination_path(switch_id: switch_destination.switch.id, id: switch_destination.id) %></td>
-        <td><%= link_to 'Destroy', switch_switch_destination_path(switch_id: switch_destination.switch.id, id: switch_destination.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+        <tbody>
+          <% @switch_destinations.each do |switch_destination| %>
+            <tr>
+              <th scope="row"><%= link_to switch_destination.switch.name, switch_destination.switch %></th>
+              <td><%= switch_destination.switch_destination_type %></td>
+              <td><%= switch_destination.switch_destination_address %></td>
+              <td><%= link_to 'Show', switch_switch_destination_path(switch_id: switch_destination.switch.id, id: switch_destination.id) %></td>
+              <td><%= link_to 'Edit', edit_switch_switch_destination_path(switch_id: switch_destination.switch.id, id: switch_destination.id) %></td>
+              <td><%= link_to 'Destroy', switch_switch_destination_path(switch_id: switch_destination.switch.id, id: switch_destination.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
 
-<br>
+      <br>
 
-<%= link_to 'New Switch Destination', new_switch_switch_destination_path(switch_id: @switch.id) %><br>
-<%= link_to 'Back To Switch', switches_path(@switch) %>
+      <%= link_to 'New Switch Destination', new_switch_switch_destination_path(@switch), class: 'white btn btn-primary' %><br><br>
+      <%= link_to 'Back To Switch', switch_path(@switch) %>
+    </div>
+  </div>
+</div>

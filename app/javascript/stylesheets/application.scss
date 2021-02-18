@@ -4,9 +4,21 @@
 $white: white;
 $black: black;
 
+a.white.btn {
+  color: $white;
+}
+
 .navbar {
   margin-bottom: 0;
   background: $black;
+}
+
+main {
+  padding-top: 60px;
+}
+
+.center {
+  margin: auto;
 }
 
 body {
@@ -49,8 +61,10 @@ a:visited {
 }
 
 th,
-tr {
-  color: $black;
+tr,
+td a,
+td a:visited {
+  color: $white;
 }
 
 .btn-primary {

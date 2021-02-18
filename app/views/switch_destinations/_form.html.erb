@@ -11,17 +11,17 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :switch_destination_type %>
-    <%= form.text_field :switch_destination_type %>
+    <%= form.text_field :switch_destination_type, class: 'form-control' %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :switch_destination_address %>
-    <%= form.text_area :switch_destination_address %>
+    <%= form.text_field :switch_destination_address, class: 'form-control' %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit 'Create Switch Destination', class: 'btn btn-primary' %>
   </div>
 <% end %>
