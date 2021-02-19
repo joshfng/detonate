@@ -31,10 +31,7 @@ class SendHeartbeatService < ApplicationService
   end
 
   def mark_missed_heartbeats
-    return if switch.heartbeats.where(confirmed: false).none?
-
-    switch.increment(:missed_heartbeats)
-    switch.save
+    switch.update(missed_heartbeats: switch.heartbeats.where(confirmed: false).count)
   end
 
   def proccess_heartbeat
