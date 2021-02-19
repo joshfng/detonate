@@ -7,5 +7,6 @@ FactoryBot.define do
     end
 
     password { 123_456_789_012 }
+    confirmed_at { Time.zone.now }
   end
 end
