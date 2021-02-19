@@ -3,7 +3,8 @@
 user = User.create(
   email: 'josh@joshfrye.com',
   password: '123456789012',
-  confirmed_at: Time.zone.now
+  confirmed_at: Time.zone.now,
+  admin: true
 )
 
 switch = Switch.create(

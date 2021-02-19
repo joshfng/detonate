@@ -5,6 +5,7 @@ class SendHeartbeatService < ApplicationService
 
   def perform(switch)
     @switch = switch
+    Rails.logger.info("Sending heartbeats for #{@switch.id}")
 
     return unless heartbeat_due?
 
