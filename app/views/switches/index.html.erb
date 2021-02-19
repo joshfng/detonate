@@ -9,9 +9,9 @@
         <thead>
           <tr>
             <th scope="col">Switch Name</th>
-            <th scope="col">Heartbeat Interval</th>
-            <th scope="col">Max Missed Heartbeats</th>
-            <th scope="col">Missed Heartbeats</th>
+            <th scope="col">Interval</th>
+            <th scope="col">Max Missed</th>
+            <th scope="col">Missed</th>
             <th scope="col">Heartbeat Destinations</th>
             <th scope="col">Switch Destinations</th>
             <th scope="col" colspan="2">Actions</th>
@@ -20,7 +20,7 @@
         <tbody>
           <% @current_user.switches.each do |switch| %>
             <tr>
-              <th scope="row"><%= link_to(truncate(switch.name, length: 10), switch) %></th>
+              <th scope="row"><%= link_to(truncate(switch.name, length: 10), switch) %></th>'
               <td><%= switch.heartbeat_interval %></td>
               <td><%= switch.max_missed_heartbeats %></td>
               <td><%= switch.missed_heartbeats %></td>
