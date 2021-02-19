@@ -10,39 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_19_030734) do
+ActiveRecord::Schema.define(version: 2021_02_13_182106) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
 
-  create_table "heartbeat_destinations", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.uuid "switch_id", null: false
-    t.integer "heartbeat_destination_type", default: 0, null: false
-    t.text "heartbeat_destination_address_ciphertext"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["switch_id"], name: "index_heartbeat_destinations_on_switch_id"
-  end
-
   create_table "heartbeats", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "switch_id", null: false
-    t.uuid "heartbeat_destination_id", null: false
-    t.boolean "heartbeat_confirmed", default: false
+    t.boolean "confirmed", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["heartbeat_destination_id"], name: "index_heartbeats_on_heartbeat_destination_id"
     t.index ["switch_id"], name: "index_heartbeats_on_switch_id"
-  end
-
-  create_table "switch_destinations", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.uuid "switch_id", null: false
-    t.integer "switch_destination_type", default: 0, null: false
-    t.text "switch_destination_address_ciphertext"
-    t.boolean "switch_destination_notified", default: false, null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["switch_id"], name: "index_switch_destinations_on_switch_id"
   end
 
   create_table "switches", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -52,13 +31,18 @@ ActiveRecord::Schema.define(version: 2021_02_19_030734) do
     t.boolean "detonated", default: false, null: false
     t.integer "heartbeat_interval", default: 0, null: false
     t.integer "max_missed_heartbeats", default: 5, null: false
+    t.integer "missed_heartbeats", default: 0, null: false
+    t.text "heartbeat_address_ciphertext", null: false
+    t.text "switch_address_ciphertext", null: false
+    t.boolean "switch_address_notified", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "missed_heartbeats", default: 0, null: false
     t.index ["user_id"], name: "index_switches_on_user_id"
   end
 
   create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.boolean "users", default: false, null: false
+    t.boolean "admin", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "email_ciphertext", default: "", null: false
@@ -79,7 +63,6 @@ ActiveRecord::Schema.define(version: 2021_02_19_030734) do
     t.integer "failed_attempts", default: 0, null: false
     t.string "unlock_token"
     t.datetime "locked_at"
-    t.boolean "admin", default: false, null: false
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email_bidx"], name: "index_users_on_email_bidx", unique: true
     t.index ["email_ciphertext"], name: "index_users_on_email_ciphertext", unique: true

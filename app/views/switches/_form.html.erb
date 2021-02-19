@@ -17,11 +17,6 @@
   </div>
 
   <div class="form-group">
-    <%= form.label :content %>
-    <%= form.text_field :content, class: 'form-control' %>
-  </div>
-
-  <div class="form-group">
     <%= form.label :heartbeat_interval %>
     <%= form.text_field :heartbeat_interval, class: 'form-control' %>
   </div>
@@ -31,8 +26,23 @@
     <%= form.text_field :max_missed_heartbeats, class: 'form-control' %>
   </div>
 
+  <div class="form-group">
+    <%= form.label :heartbeat_address %>
+    <%= form.text_field :heartbeat_address, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :switch_address %>
+    <%= form.text_field :switch_address, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :content %>
+    <%= form.text_area :content, class: 'form-control' %>
+  </div>
+
   <div class="actions">
-    <%= form.submit "Create Switch", class: 'btn btn-primary' %>
+    <%= form.submit "Submit", class: 'btn btn-primary' %>
   </div>
 
 <% end %>

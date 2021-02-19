@@ -5,16 +5,16 @@
   <body>
     <h1>Heartbeat Attempt</h1>
     <p>
-      This is an attempt to check your heartbeat for your switch named <b>"<%= @heartbeat.heartbeat_destination.switch.name %>"</b>
+      This is an attempt to check your heartbeat for your switch named <b>"<%= @heartbeat.switch.name %>"</b>
     </p>
     <p>
       To confirm you are alive and well, just follow this link: <%= link_to @url, @url %>
     </p>
     <p>
-      Failure to confirm your heartbeat with this switch at the choosen interval <b>"<%= @heartbeat.heartbeat_destination.switch.heartbeat_interval %>"</b> will result in your switch's information being released.
+      Failure to confirm your heartbeat with this switch at the choosen interval <b>"<%= @heartbeat.switch.heartbeat_interval %>"</b> will result in your switch's information being released.
     </p>
     <p>
-      <b>You have missed <%= @heartbeat.heartbeat_destination.switch.missed_heartbeats %> of <%= @heartbeat.heartbeat_destination.switch.max_missed_heartbeats %> heartbeats</b>
+      <b>You have missed <%= @heartbeat.switch.missed_heartbeats %> of <%= @heartbeat.switch.max_missed_heartbeats %> heartbeats</b>
     </p>
   </body>
 </html>

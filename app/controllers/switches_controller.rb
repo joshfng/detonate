@@ -65,6 +65,15 @@ class SwitchesController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def switch_params
-    params.require(:switch).permit(:name, :content, :heartbeat_interval, :max_missed_heartbeats)
+    params
+      .require(:switch)
+      .permit(
+        :name,
+        :content,
+        :heartbeat_interval,
+        :max_missed_heartbeats,
+        :heartbeat_address,
+        :switch_address
+      )
   end
 end

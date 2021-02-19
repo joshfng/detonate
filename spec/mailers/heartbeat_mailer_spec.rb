@@ -14,7 +14,7 @@ RSpec.describe HeartbeatMailer, type: :mailer do
 
     it 'renders the headers' do
       expect(mail.subject).to eq('Heartbeat Attempt')
-      expect(mail.to).to eq([heartbeat.heartbeat_destination.heartbeat_destination_address])
+      expect(mail.to).to eq([heartbeat.switch.heartbeat_address])
       expect(mail.from).to eq(['noreply@detonateapp.com'])
     end
 
