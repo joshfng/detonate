@@ -4,4 +4,5 @@
 /vendor
 /.vscode
 /public/packs
+/public/assets
 /.github
