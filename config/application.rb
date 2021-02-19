@@ -38,5 +38,7 @@ module Detonate
     config.generators.system_tests = nil
 
     config.active_job.queue_adapter = :sidekiq
+
+    config.middleware.insert_after ActionDispatch::Static, Rack::Deflater
   end
 end
