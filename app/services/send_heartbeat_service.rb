@@ -9,7 +9,7 @@ class SendHeartbeatService < ApplicationService
 
     unless heartbeat_due?
       Rails.logger.info("No heartbeat due - switch #{@switch.id}")
-      return
+      return false
     end
 
     mark_missed_heartbeats
@@ -17,6 +17,8 @@ class SendHeartbeatService < ApplicationService
     switch.heartbeat_destinations.find_each do |heartbeat_destination|
       proccess_heartbeat_destination(heartbeat_destination)
     end
+
+    true
   end
 
   def heartbeat_due?
