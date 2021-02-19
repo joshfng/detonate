@@ -5,9 +5,12 @@ class SendHeartbeatService < ApplicationService
 
   def perform(switch)
     @switch = switch
-    Rails.logger.info("Sending heartbeats for #{@switch.id}")
+    Rails.logger.info("Sending heartbeats - switch #{@switch.id}")
 
-    return unless heartbeat_due?
+    unless heartbeat_due?
+      Rails.logger.info("No heartbeat due - switch #{@switch.id}")
+      return
+    end
 
     switch.heartbeat_destinations.find_each do |heartbeat_destination|
       proccess_heartbeat_destination(heartbeat_destination)
@@ -28,6 +31,8 @@ class SendHeartbeatService < ApplicationService
   end
 
   def proccess_heartbeat_destination(heartbeat_destination)
+    Rails.logger.info("Processing heartbeat destination #{heartbeat_destination.id} - switch #{@switch.id}")
+
     if switch.alive?
       send_switch_heartbeat(heartbeat_destination)
     else
@@ -40,6 +45,7 @@ class SendHeartbeatService < ApplicationService
 
     case heartbeat_destination.heartbeat_destination_type
     when 'email'
+      Rails.logger.info("Sending heartbeat destination email for #{heartbeat_destination.id} - switch #{@switch.id}")
       HeartbeatMailer.with(heartbeat: heartbeat).send_heartbeat.deliver_later
     end
   end
