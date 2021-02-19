@@ -11,14 +11,14 @@ RSpec.describe SwitchDetonationService, type: :service do
     end
 
     it 'raises an exception if the switch has already detonated' do
-      switch = create(:switch, detonated: true)
+      switch = create(:switch, detonated: true, missed_heartbeats: 10)
       create_list(:heartbeat, 10, switch: switch)
 
       expect { described_class.perform(switch: switch) }.to raise_error(RuntimeError, /detonated/)
     end
 
     it 'sends an email to each switch destination' do
-      switch = create(:switch)
+      switch = create(:switch, missed_heartbeats: 10)
       create(:switch_destination, switch: switch)
       create_list(:heartbeat, 10, switch: switch)
 
@@ -29,7 +29,7 @@ RSpec.describe SwitchDetonationService, type: :service do
     end
 
     it 'updates each switch destination as being notified' do
-      switch = create(:switch)
+      switch = create(:switch, missed_heartbeats: 10)
       switch_destination = create(:switch_destination, switch: switch)
       create_list(:heartbeat, 10, switch: switch)
 
@@ -40,7 +40,7 @@ RSpec.describe SwitchDetonationService, type: :service do
     end
 
     it 'updates the switch as detonated' do
-      switch = create(:switch)
+      switch = create(:switch, missed_heartbeats: 10)
       create(:switch_destination, switch: switch)
       create_list(:heartbeat, 10, switch: switch)
 

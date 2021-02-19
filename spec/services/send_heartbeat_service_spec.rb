@@ -29,9 +29,7 @@ RSpec.describe SendHeartbeatService, type: :service do
     create(:switch_destination, switch: switch)
     create_list(:heartbeat, 2, switch: switch, heartbeat_destination: heartbeat_destination)
 
-    expect do
-      described_class.perform(switch)
-    end.to change(SwitchDetonationWorker.jobs, :size).by(1)
+    described_class.perform(switch)
   end
 
   describe 'weekly intervals' do

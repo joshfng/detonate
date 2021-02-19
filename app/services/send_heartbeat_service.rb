@@ -12,6 +12,8 @@ class SendHeartbeatService < ApplicationService
       return
     end
 
+    mark_missed_heartbeats
+
     switch.heartbeat_destinations.find_each do |heartbeat_destination|
       proccess_heartbeat_destination(heartbeat_destination)
     end
@@ -30,18 +32,25 @@ class SendHeartbeatService < ApplicationService
     end
   end
 
+  def mark_missed_heartbeats
+    return if switch.heartbeats.where(heartbeat_confirmed: false).none?
+
+    switch.increment(:missed_heartbeats)
+    switch.save
+  end
+
   def proccess_heartbeat_destination(heartbeat_destination)
     Rails.logger.info("Processing heartbeat destination #{heartbeat_destination.id} - switch #{@switch.id}")
 
     if switch.alive?
       send_switch_heartbeat(heartbeat_destination)
     else
-      SwitchDetonationWorker.perform_async(switch.id)
+      SwitchDetonationService.perform(switch: switch, force: false)
     end
   end
 
   def send_switch_heartbeat(heartbeat_destination)
-    heartbeat = heartbeat_destination.heartbeats.create!(switch: switch)
+    heartbeat = Heartbeat.create!(switch: switch, heartbeat_destination: heartbeat_destination)
 
     case heartbeat_destination.heartbeat_destination_type
     when 'email'

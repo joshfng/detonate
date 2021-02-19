@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_19_012515) do
+ActiveRecord::Schema.define(version: 2021_02_19_030734) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(version: 2021_02_19_012515) do
     t.integer "max_missed_heartbeats", default: 5, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "missed_heartbeats", default: 0, null: false
     t.index ["user_id"], name: "index_switches_on_user_id"
   end
 
