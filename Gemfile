@@ -29,6 +29,9 @@ gem 'lockbox'
 gem 'sidekiq'
 gem 'sidekiq-cron'
 
+gem 'pghero'
+gem 'pg_query', '>= 0.9.0'
+
 gem 'bootsnap', '>= 1.4.4', require: false
 
 group :development, :test do

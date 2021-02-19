@@ -16,7 +16,7 @@ Rails.application.routes.draw do
     namespace :admin do
       Sidekiq::Web.disable :sessions
       mount Sidekiq::Web, at: 'sidekiq'
-      #mount PgHero::Engine, at: 'pghero'
+      mount PgHero::Engine, at: 'pghero'
     end
   end
 
