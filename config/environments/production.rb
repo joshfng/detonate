@@ -20,7 +20,7 @@ Rails.application.configure do
 
   # Ensures that a master key has been made available in either ENV["RAILS_MASTER_KEY"]
   # or in config/master.key. This key is used to decrypt credentials (and other encrypted files).
-  # config.require_master_key = true
+  config.require_master_key = true
 
   # Disable serving static files from the `/public` folder by default since
   # Apache or NGINX already handles this.
@@ -52,7 +52,7 @@ Rails.application.configure do
 
   # Include generic and useful information about system operation, but avoid logging too much
   # information to avoid inadvertent exposure of personally identifiable information (PII).
-  config.log_level = :info
+  config.log_level = :debug
 
   # Prepend all log lines with the following tags.
   config.log_tags = [:request_id]
@@ -61,7 +61,7 @@ Rails.application.configure do
   # config.cache_store = :mem_cache_store
 
   # Use a real queuing backend for Active Job (and separate queues per environment).
-  # config.active_job.queue_adapter     = :resque
+  config.active_job.queue_adapter     = :sidekiq
   # config.active_job.queue_name_prefix = "detonate_production"
 
   config.action_mailer.perform_caching = false
@@ -126,5 +126,15 @@ Rails.application.configure do
 
   config.action_mailer.default_url_options = {
     host: 'www.detonateapp.com'
+  }
+
+  ActionMailer::Base.smtp_settings = {
+    user_name: 'apikey',
+    password: ENV['SENDGRID_API_KEY'],
+    domain: 'www.detonateapp.com',
+    address: 'smtp.sendgrid.net',
+    port: 587,
+    authentication: :plain,
+    enable_starttls_auto: true
   }
 end
