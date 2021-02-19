@@ -3,5 +3,7 @@
 class HomeController < ApplicationController
   skip_before_action :authenticate_user!
 
-  def index; end
+  def index
+    redirect_to switches_path if current_user
+  end
 end
