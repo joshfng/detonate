@@ -6,10 +6,7 @@ require 'sidekiq/cron/web'
 Rails.application.routes.draw do
   get '/heartbeats/:id', to: 'heartbeats#receive_heartbeat', as: :heartbeat_receive
 
-  resources :switches do
-    resources :heartbeat_destinations
-    resources :switch_destinations
-  end
+  resources :switches
   devise_for :users
 
   authenticate :user, ->(u) { u.admin? } do

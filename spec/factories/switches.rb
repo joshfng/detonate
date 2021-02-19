@@ -8,5 +8,11 @@ FactoryBot.define do
     heartbeat_interval { :daily }
     max_missed_heartbeats { 2 }
     detonated { false }
+    sequence :heartbeat_address do |n|
+      "user#{n}@detonateapp.com"
+    end
+    sequence :switch_address do |n|
+      "user#{n}@detonateapp.com"
+    end
   end
 end

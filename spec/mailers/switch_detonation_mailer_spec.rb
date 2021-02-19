@@ -3,18 +3,18 @@
 require 'rails_helper'
 
 RSpec.describe SwitchDetonationMailer, type: :mailer do
-  describe 'send_switch_data_to_switch_destination' do
-    let(:switch_destination) { create(:switch_destination) }
+  describe 'send_switch_data_to_switch_address' do
+    let(:switch) { create(:switch) }
 
     let(:mail) do
       described_class
-        .with(switch_destination: switch_destination)
-        .send_switch_data_to_switch_destination
+        .with(switch: switch)
+        .send_switch_data_to_switch_address
     end
 
     it 'renders the headers' do
       expect(mail.subject).to eq('Someone has sent you sensitive data')
-      expect(mail.to).to eq([switch_destination.switch_destination_address])
+      expect(mail.to).to eq([switch.switch_address])
       expect(mail.from).to eq(['noreply@detonateapp.com'])
     end
 

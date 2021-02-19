@@ -4,7 +4,7 @@ require 'rails_helper'
 
 RSpec.describe ReceiveHeartbeatService, type: :service do
   it 'does nothing for confirmed heartbeats' do
-    heartbeat = create(:heartbeat, heartbeat_confirmed: true)
+    heartbeat = create(:heartbeat, confirmed: true)
 
     expect(described_class.perform(heartbeat)).to eq(false)
   end
@@ -17,13 +17,13 @@ RSpec.describe ReceiveHeartbeatService, type: :service do
   end
 
   it 'confirms heartbeats' do
-    heartbeat = create(:heartbeat, heartbeat_confirmed: false)
+    heartbeat = create(:heartbeat, confirmed: false)
     heartbeat.switch.update(max_missed_heartbeats: 10)
-    create_list(:heartbeat, 5, switch: heartbeat.switch, heartbeat_destination: heartbeat.heartbeat_destination)
+    create_list(:heartbeat, 5, switch: heartbeat.switch)
 
     expect(described_class.perform(heartbeat)).to eq(true)
-    expect(heartbeat.reload.heartbeat_confirmed).to eq(true)
-    expect(heartbeat.switch.heartbeats.where(heartbeat_confirmed: false).count).to eq(0)
+    expect(heartbeat.reload.confirmed?).to eq(true)
+    expect(heartbeat.switch.heartbeats.where(confirmed: false).count).to eq(0)
     expect(heartbeat.switch.missed_heartbeats).to eq(0)
   end
 end

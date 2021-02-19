@@ -31,7 +31,7 @@ RSpec.describe Switch, type: :model do
       expect(switch.valid?).to eq(true)
     end
 
-    it 'ensures a max_missed_heartbeats is valid' do
+    it 'ensures max_missed_heartbeats is valid' do
       switch = build(:switch, max_missed_heartbeats: nil)
       expect(switch.valid?).to eq(false)
 
@@ -42,14 +42,25 @@ RSpec.describe Switch, type: :model do
       expect(switch.valid?).to eq(true)
     end
 
-    it 'ensures a missed_heartbeats is valid' do
-      switch = build(:switch, missed_heartbeats: nil)
+    it 'ensures heartbeat_address is valid' do
+      switch = build(:switch, heartbeat_address: nil)
       expect(switch.valid?).to eq(false)
 
-      switch.missed_heartbeats = 1.1
+      switch = build(:switch, heartbeat_address: 'test')
       expect(switch.valid?).to eq(false)
 
-      switch.missed_heartbeats = 1
+      switch = build(:switch, heartbeat_address: 'nobody@detonateapp.com')
+      expect(switch.valid?).to eq(true)
+    end
+
+    it 'ensures switch_address is valid' do
+      switch = build(:switch, switch_address: nil)
+      expect(switch.valid?).to eq(false)
+
+      switch = build(:switch, switch_address: 'test')
+      expect(switch.valid?).to eq(false)
+
+      switch = build(:switch, switch_address: 'nobody@detonateapp.com')
       expect(switch.valid?).to eq(true)
     end
   end

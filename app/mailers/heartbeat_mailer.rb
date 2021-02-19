@@ -6,7 +6,7 @@ class HeartbeatMailer < ApplicationMailer
     @url = heartbeat_receive_url(@heartbeat.id)
 
     mail(
-      to: @heartbeat.heartbeat_destination.heartbeat_destination_address,
+      to: @heartbeat.switch.heartbeat_address,
       subject: 'Heartbeat Attempt'
     )
   end

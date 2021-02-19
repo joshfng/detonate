@@ -7,19 +7,11 @@ user = User.create(
   admin: true
 )
 
-switch = Switch.create(
+Switch.create(
   user: user,
   name: 'My Switch',
   content: 'Super Secret Info',
-  max_missed_heartbeats: 2
-)
-
-switch.switch_destinations.create(
-  switch_destination_type: :email,
-  switch_destination_address: 'josh@joshfrye.com'
-)
-
-switch.heartbeat_destinations.create(
-  heartbeat_destination_type: :email,
-  heartbeat_destination_address: 'josh@joshfrye.com'
+  max_missed_heartbeats: 2,
+  switch_address: 'josh@joshfrye.com',
+  heartbeat_address: 'josh@joshfrye.com'
 )

@@ -25,9 +25,20 @@
   <%= @switch.missed_heartbeats %>
 </p>
 
+<p>
+  <strong>Heartbeat address:</strong>
+  <%= @switch.heartbeat_address %>
+</p>
+
+<p>
+  <strong>Switch address:</strong>
+  <%= @switch.switch_address %>
+</p>
+
+<p>
+  <strong>Detonated:</strong>
+  <%= @switch.detonated? ? 'true' : 'false' %>
+</p>
+
 <%= link_to 'Edit', edit_switch_path(@switch) %><br><br>
-<%= link_to 'Heartbeat Destinations', switch_heartbeat_destinations_path(@switch) %><br>
-<%= link_to 'Switch Destinations', switch_switch_destinations_path(@switch) %><br><br>
-<%= link_to 'New Heartbeat Destination', new_switch_heartbeat_destination_path(@switch) %><br>
-<%= link_to 'New Switch Destination', new_switch_switch_destination_path(@switch) %><br><br>
 <%= link_to 'Back', switches_path %>

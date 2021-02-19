@@ -16,8 +16,6 @@ RSpec.describe SendHeartbeatService, type: :service do
 
   it 'sends a heartbeat when the switch is still alive' do
     switch = create(:switch, heartbeat_interval: :daily, max_missed_heartbeats: 2)
-    create(:switch_destination, switch: switch)
-    create(:heartbeat_destination, switch: switch)
 
     Sidekiq::Testing.inline! do
       expect_any_instance_of(HeartbeatMailer).to receive(:send_heartbeat) # rubocop:disable RSpec/AnyInstance
@@ -27,9 +25,10 @@ RSpec.describe SendHeartbeatService, type: :service do
 
   it 'detonates the switch when too many heartbeats have been missed' do
     switch = create(:switch, heartbeat_interval: :daily, max_missed_heartbeats: 2, missed_heartbeats: 2)
-    heartbeat_destination = create(:heartbeat_destination, switch: switch)
-    create(:switch_destination, switch: switch)
-    create_list(:heartbeat, 2, switch: switch, heartbeat_destination: heartbeat_destination)
+
+    Timecop.freeze(Time.zone.today - 1.month) do
+      create_list(:heartbeat, 2, switch: switch)
+    end
 
     expect_any_instance_of(SwitchDetonationService).to receive(:perform) # rubocop:disable RSpec/AnyInstance
     described_class.perform(switch)

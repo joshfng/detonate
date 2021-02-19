@@ -9,6 +9,10 @@ class CreateSwitches < ActiveRecord::Migration[6.1]
       t.boolean :detonated, default: false, null: false
       t.integer :heartbeat_interval, default: 0, null: false
       t.integer :max_missed_heartbeats, default: 5, null: false
+      t.integer :missed_heartbeats, default: 0, null: false
+      t.text :heartbeat_address_ciphertext, null: false
+      t.text :switch_address_ciphertext, null: false
+      t.boolean :switch_address_notified, default: false, null: false
 
       t.timestamps
     end

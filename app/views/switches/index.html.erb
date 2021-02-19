@@ -10,8 +10,9 @@
             <th scope="col">Interval</th>
             <th scope="col">Max Missed</th>
             <th scope="col">Missed</th>
-            <th scope="col">Heartbeat Destinations</th>
-            <th scope="col">Switch Destinations</th>
+            <th scope="col">Heartbeat Address</th>
+            <th scope="col">Switch Address</th>
+            <th scope="col">Detonated</th>
             <th scope="col" colspan="2">Actions</th>
           </tr>
         </thead>
@@ -22,8 +23,9 @@
               <td><%= switch.heartbeat_interval %></td>
               <td><%= switch.max_missed_heartbeats %></td>
               <td><%= switch.missed_heartbeats %></td>
-              <td><%= switch.heartbeat_destinations.count %></td>
-              <td><%= switch.switch_destinations.count %></td>
+              <td><%= switch.heartbeat_address %></td>
+              <td><%= switch.switch_address %></td>
+              <td><%= switch.detonated? ? 'true' : 'false' %></td>
               <td><%= link_to 'Edit', edit_switch_path(switch) %></td>
               <td><%= link_to 'Destroy', switch, method: :delete, data: { confirm: 'Are you sure?' } %></td>
             </tr>
