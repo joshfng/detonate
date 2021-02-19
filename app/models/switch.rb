@@ -13,6 +13,7 @@ class Switch < ApplicationRecord
   enum heartbeat_interval: { daily: 0, weekly: 1, monthly: 2 }
 
   validates :user, presence: true
+  validates :missed_heartbeats, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
   validates :max_missed_heartbeats, numericality: { only_integer: true, greater_than_or_equal_to: 1 }
   validates :heartbeat_interval, inclusion: { in: Switch.heartbeat_intervals }
 

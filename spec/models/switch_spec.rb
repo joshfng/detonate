@@ -41,5 +41,32 @@ RSpec.describe Switch, type: :model do
       switch.max_missed_heartbeats = 1
       expect(switch.valid?).to eq(true)
     end
+
+    it 'ensures a missed_heartbeats is valid' do
+      switch = build(:switch, missed_heartbeats: nil)
+      expect(switch.valid?).to eq(false)
+
+      switch.missed_heartbeats = 1.1
+      expect(switch.valid?).to eq(false)
+
+      switch.missed_heartbeats = 1
+      expect(switch.valid?).to eq(true)
+    end
+  end
+
+  describe 'dead or alive' do
+    it 'tracks a switch as alive' do
+      switch = create(:switch)
+
+      expect(switch.alive?).to eq(true)
+      expect(switch.dead?).to eq(false)
+    end
+
+    it 'tracks a switch as dead' do
+      switch = create(:switch, max_missed_heartbeats: 1, missed_heartbeats: 1)
+
+      expect(switch.alive?).to eq(false)
+      expect(switch.dead?).to eq(true)
+    end
   end
 end

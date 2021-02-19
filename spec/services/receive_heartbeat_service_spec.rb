@@ -24,5 +24,6 @@ RSpec.describe ReceiveHeartbeatService, type: :service do
     expect(described_class.perform(heartbeat)).to eq(true)
     expect(heartbeat.reload.heartbeat_confirmed).to eq(true)
     expect(heartbeat.switch.heartbeats.where(heartbeat_confirmed: false).count).to eq(0)
+    expect(heartbeat.switch.missed_heartbeats).to eq(0)
   end
 end
