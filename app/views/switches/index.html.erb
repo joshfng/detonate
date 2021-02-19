@@ -9,7 +9,6 @@
         <thead>
           <tr>
             <th scope="col">Switch Name</th>
-            <th scope="col">Switch Content</th>
             <th scope="col">Heartbeat Interval</th>
             <th scope="col">Max Missed Heartbeats</th>
             <th scope="col">Missed Heartbeats</th>
@@ -22,7 +21,6 @@
           <% @current_user.switches.each do |switch| %>
             <tr>
               <th scope="row"><%= link_to(truncate(switch.name, length: 10), switch) %></th>
-              <td><%= truncate(switch.content_ciphertext, length: 10) %></td>
               <td><%= switch.heartbeat_interval %></td>
               <td><%= switch.max_missed_heartbeats %></td>
               <td><%= switch.missed_heartbeats %></td>
