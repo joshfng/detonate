@@ -9,14 +9,6 @@ RSpec.describe ReceiveHeartbeatService, type: :service do
     expect(described_class.perform(heartbeat)).to eq(false)
   end
 
-  it 'does nothing for dead switches' do
-    heartbeat = create(:heartbeat)
-    create(:heartbeat, switch: heartbeat.switch)
-    create(:heartbeat, switch: heartbeat.switch)
-
-    expect(described_class.perform(heartbeat)).to eq(false)
-  end
-
   it 'does nothing for detonated switches' do
     heartbeat = create(:heartbeat)
     heartbeat.switch.update(detonated: true)
