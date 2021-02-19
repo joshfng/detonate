@@ -4,88 +4,11 @@
 $white: white;
 $black: black;
 
-a.white.btn {
-  color: $white;
-}
-
 .navbar {
-  margin-bottom: 0;
+  margin-bottom: 60px;
   background: $black;
-}
-
-main {
-  padding-top: 60px;
 }
 
 .center {
   margin: auto;
-}
-
-body {
-  background: $white;
-  color: $black;
-  // background: $black;
-  // color: $white;
-  font-family: "Merriweather", sans-serif;
-}
-
-h1,
-h2 {
-  font-weight: bold;
-}
-
-p {
-  font-size: 16px;
-  color: $black;
-  // color: $white;
-}
-
-a:visited {
-  color: $black;
-}
-
-.jumbotron {
-  background: #0048cd;
-  color: $white;
-  text-align: center;
-
-  p {
-    color: $white;
-    font-size: 26px;
-  }
-}
-
-.link {
-  color: $black;
-  // color: $white;
-}
-
-th,
-tr,
-td a,
-td a:visited {
-  color: $white;
-}
-
-.btn-primary {
-  color: $white;
-  border-color: $white;
-  margin-bottom: 5px;
-}
-
-.btn-sm {
-  background-color: $white;
-  display: inline-block;
-}
-
-img,
-video,
-audio {
-  margin-top: 20px;
-  max-width: 80%;
-}
-
-caption {
-  float: left;
-  clear: both;
 }
