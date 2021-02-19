@@ -8,7 +8,7 @@ default: &default
 development:
   <<: *default
   database: detonate_development
-  host: detonate_db
+  host: localhost
   min_messages: notice
 
 test:
