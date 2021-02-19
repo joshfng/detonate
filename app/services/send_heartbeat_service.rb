@@ -41,8 +41,8 @@ class SendHeartbeatService < ApplicationService
     Rails.logger.info("Processing heartbeat for switch - #{@switch.id}")
 
     if switch.alive?
-      send_switch_heartbeat
       mark_missed_heartbeats
+      send_switch_heartbeat
     else
       SwitchDetonationService.perform(switch: switch, force: false)
     end
