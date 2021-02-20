@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 
-user = User.create(
+user = User.create!(
   email: 'josh@joshfrye.com',
   password: '123456789012',
   confirmed_at: Time.zone.now,
   admin: true
 )
 
-Switch.create(
+Switch.create!(
   user: user,
   name: 'My Switch',
   content: 'Super Secret Info',

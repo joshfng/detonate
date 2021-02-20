@@ -10,8 +10,9 @@ volumes:
   shared_data:
 
 services:
-  detonate_redis:
+  redis:
     image: redis:4.0-alpine
+    container_name: redis
     command: redis-server
     networks:
       - development
@@ -19,9 +20,9 @@ services:
     volumes:
       - shared_data:/var/shared/redis
 
-  detonate_db:
+  db:
     image: postgres:12-alpine
-    container_name: detonate_db
+    container_name: db
     volumes:
       - db_data:/var/lib/postgresql/data
       - shared_data:/var/shared
@@ -29,17 +30,15 @@ services:
       - development
       - test
     environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
       POSTGRES_DB: detonate_development
-      POSTGRES_PASSWORD: detonate
-      POSTGRES_USER: detonate
-    ports:
-      - 5099:5432
 
-  detonate_app:
+  app:
+    container_name: app
     build:
       context: .
       dockerfile: Dockerfile.dev
-    container_name: detonate_app
     volumes:
       - .:/var/app
       - shared_data:/var/shared
@@ -50,22 +49,19 @@ services:
       - 3000:3000
     stdin_open: true
     tty: true
-    # env_file: .env.development
+    env_file: .env.development
     entrypoint: dev-entrypoint.sh
     command: ["rails", "server", "-p", "3000", "-b", "0.0.0.0"]
-    environment:
-      RAILS_ENV: development
-      REDIS_URL: "redis://detonate_redis:6379/0"
-      DATABASE_URL: "postgres://detonate:detonate@detonate_db/detonate_development"
     depends_on:
-      - detonate_db
-      - detonate_redis
+      - db
+      - redis
+    restart: "always"
 
-  detonate_worker:
+  worker:
+    container_name: worker
     build:
       context: .
       dockerfile: Dockerfile.dev
-    container_name: detonate_worker
     volumes:
       - .:/var/app
       - shared_data:/var/shared
@@ -74,20 +70,21 @@ services:
       - development
     stdin_open: true
     tty: true
-    # env_file: .env.development
+    env_file: .env.development
     entrypoint: dev-entrypoint.sh
     command: ["sidekiq"]
     environment:
       RAILS_ENV: development
-      REDIS_URL: "redis://detonate_redis:6379/0"
-      DATABASE_URL: "postgres://detonate:detonate@detonate_db/detonate_development"
     depends_on:
-      - detonate_db
-      - detonate_redis
+      - db
+      - redis
+    restart: "always"
 
-  detonate_test:
-    image: detonate_detonate_app
-    container_name: detonate_test
+  test:
+    container_name: test
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
     volumes:
       - .:/var/app
       - shared_data:/var/shared
@@ -98,13 +95,10 @@ services:
       - 3001:3000
     stdin_open: true
     tty: true
-    # env_file: .env.test
+    env_file: .env.test
     entrypoint: test-entrypoint.sh
     command: ["rails", "-v"]
-    environment:
-      RAILS_ENV: test
-      REDIS_URL: "redis://detonate_redis:6379/1"
-      DATABASE_URL: "postgres://detonate:detonate@detonate_db/detonate_test"
     depends_on:
-      - detonate_db
-      - detonate_redis
+      - db
+      - redis
+    restart: "no"
