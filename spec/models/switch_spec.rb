@@ -12,6 +12,22 @@ RSpec.describe Switch, type: :model do
       expect(switch.valid?).to eq(true)
     end
 
+    it 'ensures a name exists' do
+      switch = build(:switch, name: nil)
+      expect(switch.valid?).to eq(false)
+
+      switch.name = 'My Switch'
+      expect(switch.valid?).to eq(true)
+    end
+
+    it 'ensures content exists' do
+      switch = build(:switch, content: nil)
+      expect(switch.valid?).to eq(false)
+
+      switch.content = 'My Content'
+      expect(switch.valid?).to eq(true)
+    end
+
     it 'ensures a heartbeat_interval exists' do
       switch = build(:switch, heartbeat_interval: nil)
       expect(switch.valid?).to eq(false)
