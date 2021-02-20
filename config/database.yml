@@ -1,19 +1,14 @@
 default: &default
-  port: 5432
   adapter: postgresql
   encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
 development:
   <<: *default
-  database: detonate_development
-  host: localhost
   min_messages: notice
 
 test:
   <<: *default
-  database: detonate_test
 
 production:
   <<: *default
-  database: detonate_production

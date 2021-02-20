@@ -9,6 +9,7 @@ ENV RAILS_PORT 3000
 
 # install dependencies for application
 RUN apk -U add --no-cache \
+  bash \
   build-base \
   git \
   postgresql-dev \

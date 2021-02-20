@@ -14,19 +14,20 @@ RUN chmod +x /usr/local/bin/dev-entrypoint.sh && chmod +x /usr/local/bin/test-en
 
 # install dependencies for application
 RUN apk -U add --no-cache \
-build-base \
-git \
-postgresql-dev \
-postgresql-client \
-libxml2-dev \
-libxslt-dev \
-nodejs \
-yarn \
-imagemagick \
-tzdata \
-less \
-&& rm -rf /var/cache/apk/* \
-&& mkdir -p $APP_PATH
+  bash \
+  build-base \
+  git \
+  postgresql-dev \
+  postgresql-client \
+  libxml2-dev \
+  libxslt-dev \
+  nodejs \
+  yarn \
+  imagemagick \
+  tzdata \
+  less \
+  && rm -rf /var/cache/apk/* \
+  && mkdir -p $APP_PATH
 
 RUN gem install bundler --version "$BUNDLE_VERSION" \
 && rm -rf $GEM_HOME/cache/*
