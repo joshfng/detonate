@@ -3,23 +3,18 @@
 class SwitchesController < ApplicationController
   before_action :set_switch, only: %i[show edit update destroy]
 
-  # GET /switches or /switches.json
   def index
     @switches = current_user.switches.all
   end
 
-  # GET /switches/1 or /switches/1.json
   def show; end
 
-  # GET /switches/new
   def new
     @switch = current_user.switches.new
   end
 
-  # GET /switches/1/edit
   def edit; end
 
-  # POST /switches or /switches.json
   def create
     @switch = current_user.switches.new(switch_params)
 
@@ -34,7 +29,6 @@ class SwitchesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /switches/1 or /switches/1.json
   def update
     respond_to do |format|
       if @switch.update(switch_params)
@@ -47,7 +41,6 @@ class SwitchesController < ApplicationController
     end
   end
 
-  # DELETE /switches/1 or /switches/1.json
   def destroy
     @switch.destroy
     respond_to do |format|
@@ -58,12 +51,10 @@ class SwitchesController < ApplicationController
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
   def set_switch
     @switch = current_user.switches.find(params[:id])
   end
 
-  # Only allow a list of trusted parameters through.
   def switch_params
     params
       .require(:switch)
