@@ -20,6 +20,8 @@ class SwitchesController < ApplicationController
 
     respond_to do |format|
       if @switch.save
+        SendHeartbeatWorker.perform_async(@switch.id)
+
         format.html { redirect_to @switch, notice: 'Switch was successfully created.' }
         format.json { render :show, status: :created, location: @switch }
       else
