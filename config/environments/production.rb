@@ -49,6 +49,11 @@ Rails.application.configure do
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   config.force_ssl = true
+    config.ssl_options = {
+      redirect: true,
+      secure_cookies: true,
+      hsts: true
+    }
 
   # Include generic and useful information about system operation, but avoid logging too much
   # information to avoid inadvertent exposure of personally identifiable information (PII).
@@ -121,17 +126,17 @@ Rails.application.configure do
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
 
   config.action_controller.default_url_options = {
-    host: 'www.detonateapp.com'
+    host: 'detonateapp.com'
   }
 
   config.action_mailer.default_url_options = {
-    host: 'www.detonateapp.com'
+    host: 'detonateapp.com'
   }
 
   ActionMailer::Base.smtp_settings = {
     user_name: 'apikey',
     password: ENV['SENDGRID_API_KEY'],
-    domain: 'www.detonateapp.com',
+    domain: 'detonateapp.com',
     address: 'smtp.sendgrid.net',
     port: 587,
     authentication: :plain,

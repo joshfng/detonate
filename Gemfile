@@ -29,6 +29,8 @@ gem 'lockbox'
 gem 'sidekiq'
 gem 'sidekiq-cron'
 
+gem 'rack-canonical-host'
+
 gem 'pghero'
 gem 'pg_query', '>= 0.9.0'
 
