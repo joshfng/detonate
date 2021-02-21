@@ -1,21 +1,32 @@
 <div class="jumbotron">
   <div class="container">
-    <h1>Detonate</h1>
-    <p>Some text</p>
-    <br>
-    <p>
-      <%= button_to 'Get Info', root_path, method: :get,  class: "btn btn-primary btn-lg"%>
+    <h1 class="display-3">Detonate App</h1>
+    <p>Detonate App is a <a href="https://en.wikipedia.org/wiki/Dead_man%27s_switch#Software" target="_blank">Software Dead Man's Switch</a>. We'll send you heartbeat attempts to make sure you're ok, and if not, we will email your stored information to the address of your choice. You can configure how often we should check in with you, and how many missed heartbeats it takes to release your stored information. All data is stored encrypted at rest and is only ever visible to you and the address you send it to. The code is opensource and availble on <a href="https://github.com/detonateapp/detonate">GitHub</a></p>
+
+    <p>This service is offered free in the hopes that others can find value in it. If you're in journalism, or any field where your life may be at risk due to the information you know, this service helps to provide insurnace that others know what you know, if the worste happens.</p>
+    <p style="display: inline-block">
+      <a class="btn btn-primary btn-lg" href="/users/sign_up" role="button">Sign Up ✅</a>
     </p>
+    <form style="display: inline-block; margin-left: 20px;" action="https://www.paypal.com/donate" method="post" target="_top">
+      <input type="hidden" name="business" value="66Y597DWDQQS4" />
+      <input type="hidden" name="item_name" value="Detonate App" />
+      <input type="hidden" name="currency_code" value="USD" />
+      <button action="submit" class="btn btn-primary btn-lg">Dontate 💲</button>
+    </form>
   </div>
 </div>
 
-<div class="row">
-  <div class="col-lg-6">
-    <h3>Detonate</h3>
-    <p>More Text</p>
+<div class="row center">
+  <div class="col-lg-4">
+    <h3>Create a "Switch"</h3>
+    <p>A switch is a set of data you want saved, and some settings to configure how often we should send heartbeat attempts, and how many should be missed before we consider you "dead".</p>
   </div>
-  <div class="col-lg-6">
-    <h3>App</h3>
-    <p>More Text Again</p>
+  <div class="col-lg-4">
+    <h3>Send your hearbeat</h3>
+    <p>At your choosen interval we'll send you an email with a link. Clicking the link lets us know you're alive and well. You can configure how often these should come, and how many need to be missed.</p>
+  </div>
+  <div class="col-lg-4">
+    <h3>Detonate your Switch</h3>
+    <p>If too many of your heartbeat attempts are missed, we email the information you've stored with us to the email address you've configured. We never see the data you stored.</p>
   </div>
 </div>

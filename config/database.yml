@@ -6,9 +6,11 @@ default: &default
 development:
   <<: *default
   min_messages: notice
+  database: detonateapp_development
 
 test:
   <<: *default
+  database: detonateapp_test
 
 production:
   <<: *default
