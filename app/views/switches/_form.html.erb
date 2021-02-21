@@ -12,33 +12,38 @@
   <% end %>
 
   <div class="form-group">
-    <%= form.label :name %>
+    <%= form.label 'Switch name' %>
     <%= form.text_field :name, class: 'form-control' %>
   </div>
 
+  <br>
   <div class="form-group">
-    <%= form.label :heartbeat_interval %>
-    <%= form.text_field :heartbeat_interval, class: 'form-control' %>
+    <%= form.label 'How often should we email you to make sure you\'re ok?' %>
+    <%= form.select :heartbeat_interval, Switch::heartbeat_intervals.keys, { selected: @switch.heartbeat_interval }, { class: 'form-control' } %>
   </div>
 
+  <br>
   <div class="form-group">
-    <%= form.label :max_missed_heartbeats %>
+    <%= form.label 'How many heartbeats should be missed before we release your information?' %>
     <%= form.text_field :max_missed_heartbeats, class: 'form-control' %>
   </div>
 
+  <br>
   <div class="form-group">
-    <%= form.label :heartbeat_address %>
+    <%= form.label 'Where should we send the heartbeat attemps?' %>
     <%= form.text_field :heartbeat_address, class: 'form-control' %>
   </div>
 
+  <br>
   <div class="form-group">
-    <%= form.label :switch_address %>
+    <%= form.label 'Where would you like your information sent if we don\'t hear back from you?'  %>
     <%= form.text_field :switch_address, class: 'form-control' %>
   </div>
 
+  <br>
   <div class="form-group">
-    <%= form.label :content %>
-    <%= form.text_area :content, class: 'form-control' %>
+    <%= form.label 'What information would you like sent? Only text is supported, but you can include links to other files hosted elsewhere.' %>
+    <%= form.text_area :content, class: 'form-control', style: 'height: 500px;' %>
   </div>
 
   <div class="actions">
@@ -46,3 +51,4 @@
   </div>
 
 <% end %>
+<br>
