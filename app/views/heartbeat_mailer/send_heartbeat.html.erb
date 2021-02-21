@@ -5,7 +5,7 @@
   <body>
     <h1>Heartbeat Attempt</h1>
     <p>
-      This is an attempt to check your heartbeat for your switch named <b>"<%= @heartbeat.switch.name %>"</b>
+      This is an attempt from <%= link_to 'Detonate', root_url %> to check your heartbeat for your switch named <b>"<%= @heartbeat.switch.name %>"</b>
     </p>
     <p>
       To confirm you are alive and well, just follow this link: <%= link_to @url, @url %>
