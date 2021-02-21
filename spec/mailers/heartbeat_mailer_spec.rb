@@ -19,7 +19,7 @@ RSpec.describe HeartbeatMailer, type: :mailer do
     end
 
     it 'renders the body' do
-      expect(mail.body.encoded).to include('This is an attempt to check your heartbeat for your switch named')
+      expect(mail.body.encoded).to include('This is an attempt from')
     end
   end
 end
