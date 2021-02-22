@@ -11,7 +11,7 @@
       To confirm you are alive and well, just follow this link: <%= link_to @url, @url %>
     </p>
     <p>
-      Failure to confirm your heartbeat with this switch at the choosen interval <b>"<%= @heartbeat.switch.heartbeat_interval %>"</b> will result in your switch's information being released.
+      Failure to confirm your heartbeat with this switch at the chosen interval <b>"<%= @heartbeat.switch.heartbeat_interval %>"</b> will result in your switch's information being released.
     </p>
     <p>
       <b>You have missed <%= @heartbeat.switch.missed_heartbeats %> of <%= @heartbeat.switch.max_missed_heartbeats %> heartbeats</b>
