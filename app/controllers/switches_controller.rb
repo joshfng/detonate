@@ -17,6 +17,7 @@ class SwitchesController < ApplicationController
 
   def create
     @switch = current_user.switches.new(switch_params)
+    @switch.content.strip!
 
     respond_to do |format|
       if @switch.save
@@ -35,7 +36,11 @@ class SwitchesController < ApplicationController
     respond_to do |format|
       # If editing the switch, mark it as alive and confirm all prior hearbeats
       # The user editing the switch is a signal they are fine
-      if @switch.update(switch_params.merge(missed_heartbeats: 0))
+
+      attributes = switch_params.merge(missed_heartbeats: 0)
+      attributes[:content].strip!
+
+      if @switch.update(attributes)
         @switch.heartbeats.update_all(confirmed: true) # rubocop:disable Rails/SkipsModelValidations
 
         format.html { redirect_to @switch, notice: 'Switch was successfully updated.' }
