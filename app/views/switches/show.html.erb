@@ -1,44 +1,30 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @switch.name %>
-</p>
+<div class="col-10 center">
+  <h1><%= @switch.name %></h1>
+  <br>
 
-<p>
-  <strong>Content:</strong>
-  <%= @switch.content %>
-</p>
+  <p>
+    We'll send you heartbeats <strong><%= @switch.heartbeat_interval %></strong> to <strong><%= @switch.heartbeat_address %></strong> and you can miss a maximum of <strong><%= @switch.max_missed_heartbeats %></strong>. Currently, you've missed <strong><%= @switch.missed_heartbeats %></strong> heartbeats.
+  </p>
 
-<p>
-  <strong>Heartbeat interval:</strong>
-  <%= @switch.heartbeat_interval %>
-</p>
+  <p>
+    If you miss all of your configured heartbeats, we'll send the information below to <strong><%= @switch.switch_address %></strong>
+  </p>
 
-<p>
-  <strong>Max missed heartbeats:</strong>
-  <%= @switch.max_missed_heartbeats %>
-</p>
+  <br>
+  <p>
+    <h3>Here is your sensitive information:</h3>
+    <br>
+    <pre>
+      <%= @switch.content %>
+    </pre>
+  </p>
 
-<p>
-  <strong>Missed heartbeat:</strong>
-  <%= @switch.missed_heartbeats %>
-</p>
-
-<p>
-  <strong>Heartbeat address:</strong>
-  <%= @switch.heartbeat_address %>
-</p>
-
-<p>
-  <strong>Switch address:</strong>
-  <%= @switch.switch_address %>
-</p>
-
-<p>
-  <strong>Detonated:</strong>
-  <%= @switch.detonated? ? 'true' : 'false' %>
-</p>
-
-<%= link_to 'Edit', edit_switch_path(@switch) %><br><br>
-<%= link_to 'Back', switches_path %>
+  <br>
+  <br>
+  <%= link_to 'Edit', edit_switch_path(@switch) %>
+  <br>
+  <br>
+  <%= link_to 'Go Back', switches_path %>
+</div>
