@@ -11,6 +11,8 @@
 !/tmp/pids/
 !/tmp/pids/.keep
 
+.DS_Store
+
 /storage/*
 !/storage/.keep
 
