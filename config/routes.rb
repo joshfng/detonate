@@ -11,7 +11,6 @@ Rails.application.routes.draw do
 
   authenticate :user, ->(u) { u.admin? } do
     namespace :admin do
-      Sidekiq::Web.disable :sessions
       mount Sidekiq::Web, at: 'sidekiq'
       mount PgHero::Engine, at: 'pghero'
     end
