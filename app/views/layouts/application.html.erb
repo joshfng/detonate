@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <title><%= content_for?(:title) ? yield(:title) : 'Detonate' %></title>
     <meta name="description" content="<%= content_for?(:description) ? yield(:description) : 'Detonate' %>">
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -9,27 +10,30 @@
 
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+</head>
 
-  <body>
+<body>
     <header>
-      <%= render 'layouts/navigation' %>
+        <%= render 'layouts/navigation' %>
     </header>
 
     <main role="main">
-      <div class="container">
-        <%= content_for?(:content) ? yield(:content) : yield %>
-      </div>
+        <div class="container">
+            <%= content_for?(:content) ? yield(:content) : yield %>
+        </div>
     </main>
-  </body>
+</body>
 
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZXF2J228Z6"></script>
-  <script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FP609D0TT5"></script>
+<script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
+
+    function gtag() {
+        dataLayer.push(arguments);
+    }
     gtag('js', new Date());
 
-    gtag('config', 'G-ZXF2J228Z6');
-  </script>
+    gtag('config', 'G-FP609D0TT5');
+</script>
 </html>
