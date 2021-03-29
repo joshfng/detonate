@@ -2,6 +2,8 @@
 #   config.timeout = 60
 #   config.disabled = false
 #   config.debug = true
+#   config.js_errors = true
+#   config.headless = false
 #   config.logger = Rails.logger
 #   config.bots = %w[
 #     google
@@ -25,10 +27,22 @@
 #   config.after_render = (Proc.new do |url, response, env|
 #     PrerenderChrome.logger.info("In after render for #{url}, #{response.body.bytesize}")
 
-#     if !response.body.blank? && response.status == 200
+#     if !response.body.nil? && response.status == 200
 #       Rails.cache.write(url, response)
 #     end
 
+#     PrerenderChrome.logger.info(response.to_json)
+
 #     response
 #   end)
+
+#   config.js = <<~JS
+#     document.addEventListener("DOMContentLoaded", function(){
+#       alert("Hello");
+
+#       let base = document.createElement('howdy');
+#       base.href = "poop";
+#       document.head.prepend(base);
+#     });
+#   JS
 # end
