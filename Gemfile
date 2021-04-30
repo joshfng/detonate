@@ -49,7 +49,7 @@ group :development do
   gem 'foreman'
   gem 'letter_opener'
   gem 'listen', '~> 3.5'
-  gem 'rack-mini-profiler', '~> 2.0'
+  gem 'rack-mini-profiler', '~> 2.3'
   gem 'rubocop', require: false
   gem 'rubocop-performance', require: false
   gem 'rubocop-rails', require: false
