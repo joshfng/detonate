@@ -7,7 +7,7 @@ ruby '2.7.2'
 
 gem 'jbuilder', '~> 2.7'
 gem 'pg', '~> 1.1'
-gem 'puma', '~> 5.2'
+gem 'puma', '~> 5.3'
 gem 'rails', '~> 6.1.3'
 gem 'redis', '~> 4.0'
 gem 'redis-namespace'
