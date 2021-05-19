@@ -287,7 +287,7 @@ GEM
       activemodel (>= 6.0.0)
       bindex (>= 0.4.0)
       railties (>= 6.0.0)
-    webpacker (5.3.0)
+    webpacker (5.4.0)
       activesupport (>= 5.2)
       rack-proxy (>= 0.6.1)
       railties (>= 5.2)
@@ -337,7 +337,7 @@ DEPENDENCIES
   timecop
   turbolinks (~> 5)
   web-console (>= 4.1.0)
-  webpacker (~> 5.3)
+  webpacker (~> 5.4)
 
 RUBY VERSION
    ruby 2.7.2p137
