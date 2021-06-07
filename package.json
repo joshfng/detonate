@@ -17,7 +17,7 @@
     "eslint": "^7.28.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-import": "^2.23.3",
-    "prettier": "^2.3.0",
+    "prettier": "^2.3.1",
     "webpack-dev-server": "^3.11.2"
   }
 }
