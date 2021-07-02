@@ -19,5 +19,9 @@
     "eslint-plugin-import": "^2.23.3",
     "prettier": "^2.3.2",
     "webpack-dev-server": "^3.11.2"
+  },
+  "resolutions": {
+    "glob-parent": "^5.1.2",
+    "css-what": "^5.0.1"
   }
 }
