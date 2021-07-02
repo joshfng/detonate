@@ -1000,9 +1000,9 @@
   integrity sha512-1z8k4wzFnNjVK/tlxvrWuK5WMt6mydWWP7+zvH5eFep4oj+UkrfiJTRtjCeBXNpwaA/FYqqtb4/QS4ianFpIRA==
 
 "@types/node@*":
-  version "15.6.1"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-15.6.1.tgz#32d43390d5c62c5b6ec486a9bc9c59544de39a08"
-  integrity sha512-7EIraBEyRHEe7CH+Fm1XvgqU6uwZN8Q7jppJGcqjROMT29qhAuuOxYB1uEY5UMYQKEmA5D+5tBnhdaPXSsLONA==
+  version "15.14.0"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-15.14.0.tgz#74dbf254fb375551a9d2a71faf6b9dbc2178dc53"
+  integrity sha512-um/+/ip3QZmwLfIkWZSNtQIJNVAqrJ92OkLMeuZrjZMTAJniI7fh8N8OICyDhAJ2mzgk/fmYFo72jRr5HyZ1EQ==
 
 "@types/parse-json@^4.0.0":
   version "4.0.0"
@@ -2327,10 +2327,10 @@ css-tree@^1.1.2:
     mdn-data "2.0.14"
     source-map "^0.6.1"
 
-css-what@^3.2.1:
-  version "3.4.2"
-  resolved "https://registry.yarnpkg.com/css-what/-/css-what-3.4.2.tgz#ea7026fcb01777edbde52124e21f327e7ae950e4"
-  integrity sha512-ACUm3L0/jiZTqfzRM3Hi9Q8eZqd6IK37mMWPLz9PJxkLWllYeRf+EHUSHYEtFop2Eqytaq1FizFVh7XfBnXCDQ==
+css-what@^3.2.1, css-what@^5.0.1:
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/css-what/-/css-what-5.0.1.tgz#3efa820131f4669a8ac2408f9c32e7c7de9f4cad"
+  integrity sha512-FYDTSHb/7KXsWICVsxdmiExPjCfRC4qRFBdVwv7Ax9hMnvMmEjP9RfxTEZ3qPZGmADDn2vAKSo9UcN1jKVYscg==
 
 cssdb@^4.4.0:
   version "4.4.0"
@@ -3344,15 +3344,7 @@ get-value@^2.0.3, get-value@^2.0.6:
   resolved "https://registry.yarnpkg.com/get-value/-/get-value-2.0.6.tgz#dc15ca1c672387ca76bd37ac0a395ba2042a2c28"
   integrity sha1-3BXKHGcjh8p2vTesCjlbogQqLCg=
 
-glob-parent@^3.1.0:
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/glob-parent/-/glob-parent-3.1.0.tgz#9e6af6299d8d3bd2bd40430832bd113df906c5ae"
-  integrity sha1-nmr2KZ2NO9K9QEMIMr0RPfkGxa4=
-  dependencies:
-    is-glob "^3.1.0"
-    path-dirname "^1.0.0"
-
-glob-parent@^5.1.2, glob-parent@~5.1.0:
+glob-parent@^3.1.0, glob-parent@^5.1.2, glob-parent@~5.1.0:
   version "5.1.2"
   resolved "https://registry.yarnpkg.com/glob-parent/-/glob-parent-5.1.2.tgz#869832c58034fe68a4093c17dc15e8340d8401c4"
   integrity sha512-AOIgSQCepiJYwP3ARnGx+5VnTu2HBYdzbGP45eLw1vr3zB3vZLeyed1sC9hnbcOc9/SrMyM5RPQrkGz4aS9Zow==
@@ -3925,7 +3917,7 @@ is-extendable@^1.0.1:
   dependencies:
     is-plain-object "^2.0.4"
 
-is-extglob@^2.1.0, is-extglob@^2.1.1:
+is-extglob@^2.1.1:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/is-extglob/-/is-extglob-2.1.1.tgz#a88c02535791f02ed37c76a1b9ea9773c833f8c2"
   integrity sha1-qIwCU1eR8C7TfHahueqXc8gz+MI=
@@ -3939,13 +3931,6 @@ is-fullwidth-code-point@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/is-fullwidth-code-point/-/is-fullwidth-code-point-3.0.0.tgz#f116f8064fe90b3f7844a38997c0b75051269f1d"
   integrity sha512-zymm5+u+sCsSWyD9qNaejV3DFvhCKclKdizYaJUuHA83RLjb7nSuGnddCHGv0hk+KY7BMAlsWeK4Ueg6EV6XQg==
-
-is-glob@^3.1.0:
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/is-glob/-/is-glob-3.1.0.tgz#7ba5ae24217804ac70707b96922567486cc3e84a"
-  integrity sha1-e6WuJCF4BKxwcHuWkiVnSGzD6Eo=
-  dependencies:
-    is-extglob "^2.1.0"
 
 is-glob@^4.0.0, is-glob@^4.0.1, is-glob@~4.0.1:
   version "4.0.1"
@@ -4446,22 +4431,17 @@ miller-rabin@^4.0.0:
     bn.js "^4.0.0"
     brorand "^1.0.1"
 
-mime-db@1.47.0:
-  version "1.47.0"
-  resolved "https://registry.yarnpkg.com/mime-db/-/mime-db-1.47.0.tgz#8cb313e59965d3c05cfbf898915a267af46a335c"
-  integrity sha512-QBmA/G2y+IfeS4oktet3qRZ+P5kPhCKRXxXnQEudYqUaEioAU1/Lq2us3D/t1Jfo4hE9REQPrbB7K5sOczJVIw==
-
-"mime-db@>= 1.43.0 < 2":
+mime-db@1.48.0, "mime-db@>= 1.43.0 < 2":
   version "1.48.0"
   resolved "https://registry.yarnpkg.com/mime-db/-/mime-db-1.48.0.tgz#e35b31045dd7eada3aaad537ed88a33afbef2d1d"
   integrity sha512-FM3QwxV+TnZYQ2aRqhlKBMHxk10lTbMt3bBkMAp54ddrNeVSfcQYOOKuGuy3Ddrm38I04If834fOUSq1yzslJQ==
 
 mime-types@~2.1.17, mime-types@~2.1.24:
-  version "2.1.30"
-  resolved "https://registry.yarnpkg.com/mime-types/-/mime-types-2.1.30.tgz#6e7be8b4c479825f85ed6326695db73f9305d62d"
-  integrity sha512-crmjA4bLtR8m9qLpHvgxSChT+XoSlZi8J4n/aIdn3z92e/U47Z0V/yl+Wh9W046GgFVAmoNR/fmdbZYcSSIUeg==
+  version "2.1.31"
+  resolved "https://registry.yarnpkg.com/mime-types/-/mime-types-2.1.31.tgz#a00d76b74317c61f9c2db2218b8e9f8e9c5c9e6b"
+  integrity sha512-XGZnNzm3QvgKxa8dpzyhFTHmpP3l5YNusmne07VUOXxou9CqUqYa/HBy124RqtVh/O2pECas/MOcsDgpilPOPg==
   dependencies:
-    mime-db "1.47.0"
+    mime-db "1.48.0"
 
 mime@1.6.0:
   version "1.6.0"
@@ -5060,11 +5040,6 @@ path-complete-extname@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/path-complete-extname/-/path-complete-extname-1.0.0.tgz#f889985dc91000c815515c0bfed06c5acda0752b"
   integrity sha512-CVjiWcMRdGU8ubs08YQVzhutOR5DEfO97ipRIlOGMK5Bek5nQySknBpuxVAVJ36hseTNs+vdIcv57ZrWxH7zvg==
-
-path-dirname@^1.0.0:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/path-dirname/-/path-dirname-1.0.2.tgz#cc33d24d525e099a5388c0336c6e32b9160609e0"
-  integrity sha1-zDPSTVJeCZpTiMAzbG4yuRYGCeA=
 
 path-exists@^3.0.0:
   version "3.0.0"
