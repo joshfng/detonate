@@ -6,6 +6,6 @@ class HeartbeatsController < ApplicationController
   def receive_heartbeat
     @heartbeat = Heartbeat.find(params[:id])
 
-    ReceiveHeartbeatService.perform(@heartbeat)
+    ReceiveHeartbeatService.perform(heartbeat: @heartbeat)
   end
 end

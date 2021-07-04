@@ -3,22 +3,18 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.7.2'
+gem 'rails', '~> 6.1'
 
-gem 'jbuilder', '~> 2.7'
-gem 'pg', '~> 1.1'
-gem 'puma', '~> 5.3'
-gem 'rails', '~> 6.1.4'
-gem 'redis', '~> 4.3'
-gem 'redis-namespace'
-gem 'sass-rails', '>= 6'
-gem 'turbolinks', '~> 5'
-gem 'webpacker', '~> 5.4'
+gem 'jbuilder'
+gem 'pg'
+gem 'puma'
+gem 'sass-rails'
+gem 'turbolinks'
+gem 'webpacker'
 
 # gem 'prerender_chrome', path: '/Users/josh/code/joshfng/prerender_chrome'
 
-# Use Active Storage variant
-# gem 'image_processing', '~> 1.2'
+gem 'avo'
 
 # Authentication
 gem 'devise'
@@ -27,16 +23,18 @@ gem 'devise'
 gem 'blind_index'
 gem 'lockbox'
 
-# Background workers
+# Background worker stuff
+gem 'redis'
+gem 'redis-namespace'
 gem 'sidekiq'
 gem 'sidekiq-cron'
 
 gem 'rack-canonical-host'
 
 gem 'pghero'
-gem 'pg_query', '>= 0.9.0'
+gem 'pg_query'
 
-gem 'bootsnap', '>= 1.4.4', require: false
+gem 'bootsnap', require: false
 
 group :development, :test do
   gem 'brakeman'
@@ -48,14 +46,14 @@ end
 group :development do
   gem 'foreman'
   gem 'letter_opener'
-  gem 'listen', '~> 3.5'
-  gem 'rack-mini-profiler', '~> 2.3'
+  gem 'listen'
+  gem 'rack-mini-profiler'
   gem 'rubocop', require: false
   gem 'rubocop-performance', require: false
   gem 'rubocop-rails', require: false
   gem 'rubocop-rspec', require: false
   gem 'spring'
-  gem 'web-console', '>= 4.1.0'
+  gem 'web-console'
 end
 
 group :test do
