@@ -52,10 +52,10 @@ run:
 	docker-compose up
 
 build:
-	docker-compose build
+	docker-compose build --no-cache
 
 down:
-	docker-compose down
+	docker-compose down --remove-orphans
 
 kill:
 	docker-compose kill

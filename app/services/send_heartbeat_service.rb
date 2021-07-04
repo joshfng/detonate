@@ -3,7 +3,7 @@
 class SendHeartbeatService < ApplicationService
   attr_reader :switch
 
-  def perform(switch)
+  def perform(switch:)
     @switch = switch
     return false if switch.detonated?
 

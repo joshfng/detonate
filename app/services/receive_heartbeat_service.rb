@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class ReceiveHeartbeatService < ApplicationService
-  def perform(heartbeat)
+  def perform(heartbeat:)
     return false if heartbeat.confirmed?
     return false if heartbeat.switch.detonated?
 

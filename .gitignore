@@ -19,8 +19,6 @@
 /public/assets
 .byebug_history
 
-/config/master.key
-
 /public/packs
 /public/packs-test
 /node_modules
@@ -28,5 +26,6 @@
 yarn-debug.log*
 .yarn-integrity
 
+/config/master.key
 /config/credentials/development.key
 /config/credentials/test.key
