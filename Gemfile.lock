@@ -67,7 +67,7 @@ GEM
       public_suffix (>= 2.0.2, < 5.0)
     argon2-kdf (0.1.6)
     ast (2.4.2)
-    avo (1.11.3)
+    avo (1.11.4)
       active_link_to
       addressable
       breadcrumbs_on_rails
