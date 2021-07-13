@@ -13,7 +13,6 @@ Rails.application.routes.draw do
     namespace :admin do
       mount Sidekiq::Web, at: 'sidekiq'
       mount PgHero::Engine, at: 'pghero'
-      mount Avo::Engine, at: 'avo'
     end
   end
 

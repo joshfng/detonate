@@ -14,8 +14,6 @@ gem 'webpacker'
 
 # gem 'prerender_chrome', path: '/Users/josh/code/joshfng/prerender_chrome'
 
-gem 'avo'
-
 # Authentication
 gem 'devise'
 
