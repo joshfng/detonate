@@ -67,7 +67,7 @@ GEM
       public_suffix (>= 2.0.2, < 5.0)
     argon2-kdf (0.1.6)
     ast (2.4.2)
-    avo (1.11.4)
+    avo (1.11.5)
       active_link_to
       addressable
       breadcrumbs_on_rails
@@ -235,7 +235,7 @@ GEM
       rake (>= 0.13)
       thor (~> 1.0)
     rainbow (3.0.0)
-    rake (13.0.4)
+    rake (13.0.6)
     rb-fsevent (0.11.0)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
