@@ -71,7 +71,7 @@ GEM
       argon2-kdf (>= 0.1.1)
     bootsnap (1.7.5)
       msgpack (~> 1.0)
-    brakeman (5.0.4)
+    brakeman (5.1.1)
     builder (3.2.4)
     bundler-audit (0.8.0)
       bundler (>= 1.2.0, < 3)
@@ -340,4 +340,4 @@ DEPENDENCIES
   webpacker
 
 BUNDLED WITH
-   2.2.23
+   2.2.24
