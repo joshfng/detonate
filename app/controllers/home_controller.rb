@@ -5,7 +5,5 @@ class HomeController < ApplicationController
 
   def index
     return redirect_to(switches_path) if current_user
-
-    render 'index', layout: 'home'
   end
 end
