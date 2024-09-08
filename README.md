@@ -17,3 +17,5 @@ Detonate encrypts and stores valuable information and checks in at a configurabl
 
 [^1]: [https://en.wikipedia.org/wiki/Dead_man%27s_switch](https://en.wikipedia.org/wiki/Dead_man%27s_switch)
 [^2]: [https://en.wikipedia.org/wiki/Dead_man%27s_switch#Software](https://en.wikipedia.org/wiki/Dead_man%27s_switch#Software)
+
+![homepage](img/homepage.png)
