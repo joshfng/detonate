@@ -15,9 +15,9 @@ jobs:
           bundler-cache: true
 
       - name: Setup Node
-        uses: actions/setup-node@v2.3.0
+        uses: actions/setup-node@v4
         with:
-          node-version: 10.17.0
+          node-version: lts
 
       - name: Find yarn cache location
         id: yarn-cache
