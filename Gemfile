@@ -12,8 +12,6 @@ gem 'sass-rails'
 gem 'turbolinks'
 gem 'webpacker'
 
-# gem 'prerender_chrome', path: '/Users/josh/code/joshfng/prerender_chrome'
-
 # Authentication
 gem 'devise'
 

@@ -7,7 +7,7 @@ class User < ApplicationRecord
 
   has_many :switches, dependent: :destroy
 
-  encrypts :email, :unconfirmed_email
+  has_encrypted :email, :unconfirmed_email
   blind_index :email, :unconfirmed_email
 
   validates :email, presence: true

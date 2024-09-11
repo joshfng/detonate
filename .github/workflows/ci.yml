@@ -43,53 +43,53 @@ jobs:
           yarn prettier --check .
           yarn run eslint
 
-  # security:
-  #   name: Security
-  #   runs-on: ubuntu-24.04
-  #   steps:
-  #     - name: Checkout code
-  #       uses: actions/checkout@v4
+  security:
+    name: Security
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-  #     - name: Setup Ruby
-  #       uses: ruby/setup-ruby@v1
-  #       with:
-  #         bundler-cache: true
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
 
-  #     - name: Setup Node
-  #       uses: actions/setup-node@v4
-  #       with:
-  #         node-version: 'lts/*'
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 'lts/*'
 
-  #     - name: Find yarn cache location
-  #       id: yarn-cache
-  #       run: echo "::set-output name=dir::$(yarn cache dir)"
+      - name: Find yarn cache location
+        id: yarn-cache
+        run: echo "::set-output name=dir::$(yarn cache dir)"
 
-  #     - name: JS package cache
-  #       uses: actions/cache@v4
-  #       with:
-  #         path: ${{ steps.yarn-cache.outputs.dir }}
-  #         key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-  #         restore-keys: |
-  #           ${{ runner.os }}-yarn-
+      - name: JS package cache
+        uses: actions/cache@v4
+        with:
+          path: ${{ steps.yarn-cache.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
 
-  #     - name: Install yarn packages
-  #       run: |
-  #         yarn install --pure-lockfile
+      - name: Install yarn packages
+        run: |
+          yarn install --pure-lockfile
 
-  #     - name: Run security checks
-  #       env:
-  #         RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
-  #         LOCKBOX_MASTER_KEY: ${{ secrets.LOCKBOX_MASTER_KEY }}
-  #       run: |
-  #         bin/bundler-audit --update
-  #         bin/brakeman -q -w2
+      - name: Run security checks
+        env:
+          RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
+          LOCKBOX_MASTER_KEY: ${{ secrets.LOCKBOX_MASTER_KEY }}
+        run: |
+          bin/bundler-audit --update
+          bin/brakeman -q -w2
 
   tests:
     name: Tests
     runs-on: ubuntu-24.04
     services:
       postgres:
-        image: postgres:12-alpine
+        image: postgres:16-alpine
         env:
           POSTGRES_USER: detonate
           POSTGRES_DB: detonate_test
