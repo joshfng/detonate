@@ -357,6 +357,7 @@ DEPENDENCIES
   rails (~> 6.1)
   redis
   redis-namespace
+  rexml (~> 3.2)
   rspec-rails
   rubocop
   rubocop-performance

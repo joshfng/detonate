@@ -12,6 +12,8 @@ gem 'sass-rails'
 gem 'turbolinks'
 gem 'webpacker'
 
+gem 'rexml', '~> 3.2'
+
 # Authentication
 gem 'devise'
 
