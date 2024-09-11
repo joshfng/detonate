@@ -5,7 +5,7 @@ class Switch < ApplicationRecord
 
   has_many :heartbeats, dependent: :destroy
 
-  encrypts :name, :content, :heartbeat_address, :switch_address
+  has_encrypted :name, :content, :heartbeat_address, :switch_address
 
   enum heartbeat_interval: { daily: 0, weekly: 1, monthly: 2 }
 
