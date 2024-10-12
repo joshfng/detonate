@@ -9,7 +9,6 @@ class Switch < ApplicationRecord
 
   enum heartbeat_interval: { daily: 0, weekly: 1, monthly: 2 }
 
-  validates :user, presence: true
   validates :name, presence: true
   validates :content, presence: true
   validates :heartbeat_address, presence: true

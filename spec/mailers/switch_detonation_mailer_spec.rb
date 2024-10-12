@@ -8,7 +8,7 @@ RSpec.describe SwitchDetonationMailer, type: :mailer do
 
     let(:mail) do
       described_class
-        .with(switch: switch)
+        .with(switch:)
         .send_switch_data_to_switch_address
     end
 

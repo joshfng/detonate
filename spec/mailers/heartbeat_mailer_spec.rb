@@ -8,7 +8,7 @@ RSpec.describe HeartbeatMailer, type: :mailer do
 
     let(:mail) do
       described_class
-        .with(heartbeat: heartbeat)
+        .with(heartbeat:)
         .send_heartbeat
     end
 

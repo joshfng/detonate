@@ -6,6 +6,7 @@ require:
 AllCops:
   NewCops: enable
   Exclude:
+    - "bin/**"
     - "db/**/*"
     - "config/**/*"
     - "node_modules/**/*"
@@ -14,6 +15,8 @@ AllCops:
     - "bin/{rails,rake,bundle,brakeman,bundle-audit,bundler-audit,rubocop}"
 
 Style/Documentation:
+  Enabled: false
+Rails/I18nLocaleTexts:
   Enabled: false
 
 Metrics/BlockLength:

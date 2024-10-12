@@ -2,6 +2,4 @@
 
 class Heartbeat < ApplicationRecord
   belongs_to :switch
-
-  validates :switch, presence: true
 end

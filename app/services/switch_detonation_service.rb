@@ -23,7 +23,7 @@ class SwitchDetonationService < ApplicationService
     Rails.logger.info("Sending switch content to switch - #{@switch.id}")
 
     SwitchDetonationMailer
-      .with(switch: switch)
+      .with(switch:)
       .send_switch_data_to_switch_address
       .deliver_now
 

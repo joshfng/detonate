@@ -6,11 +6,11 @@ RSpec.describe SendHeartbeatService, type: :service do
   it 'is allowed to send' do
     switch = create(:switch, heartbeat_interval: :daily)
 
-    expect(described_class.perform(switch: switch)).to eq(true)
+    expect(described_class.perform(switch:)).to be(true)
 
     switch.update(heartbeat_interval: :weekly)
     Timecop.freeze(Time.zone.today.beginning_of_week + 1.day) do
-      expect(described_class.perform(switch: switch)).to eq(false)
+      expect(described_class.perform(switch:)).to be(false)
     end
   end
 
@@ -19,7 +19,7 @@ RSpec.describe SendHeartbeatService, type: :service do
 
     Sidekiq::Testing.inline! do
       expect_any_instance_of(HeartbeatMailer).to receive(:send_heartbeat) # rubocop:disable RSpec/AnyInstance
-      described_class.perform(switch: switch)
+      described_class.perform(switch:)
     end
   end
 
@@ -27,11 +27,11 @@ RSpec.describe SendHeartbeatService, type: :service do
     switch = create(:switch, heartbeat_interval: :daily, max_missed_heartbeats: 2, missed_heartbeats: 2)
 
     Timecop.freeze(Time.zone.today - 1.month) do
-      create_list(:heartbeat, 2, switch: switch)
+      create_list(:heartbeat, 2, switch:)
     end
 
     expect_any_instance_of(SwitchDetonationService).to receive(:perform) # rubocop:disable RSpec/AnyInstance
-    described_class.perform(switch: switch)
+    described_class.perform(switch:)
   end
 
   describe 'weekly intervals' do
@@ -39,11 +39,11 @@ RSpec.describe SendHeartbeatService, type: :service do
       switch = create(:switch, heartbeat_interval: :weekly)
 
       Timecop.freeze(Time.zone.today.beginning_of_week + 1.day) do
-        expect(described_class.perform(switch: switch)).to eq(false)
+        expect(described_class.perform(switch:)).to be(false)
       end
 
       Timecop.freeze(Time.zone.today.beginning_of_week) do
-        expect(described_class.perform(switch: switch)).to eq(true)
+        expect(described_class.perform(switch:)).to be(true)
       end
     end
   end
@@ -53,11 +53,11 @@ RSpec.describe SendHeartbeatService, type: :service do
       switch = create(:switch, heartbeat_interval: :monthly)
 
       Timecop.freeze(Time.zone.today.beginning_of_month + 1.day) do
-        expect(described_class.perform(switch: switch)).to eq(false)
+        expect(described_class.perform(switch:)).to be(false)
       end
 
       Timecop.freeze(Time.zone.today.beginning_of_month) do
-        expect(described_class.perform(switch: switch)).to eq(true)
+        expect(described_class.perform(switch:)).to be(true)
       end
     end
   end
