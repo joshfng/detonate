@@ -7,42 +7,42 @@ RSpec.describe SwitchDetonationService, type: :service do
     it 'raises an exception if the switch is still alive' do
       switch = create(:switch)
 
-      expect { described_class.perform(switch: switch) }.to raise_error(RuntimeError, /prematurely/)
+      expect { described_class.perform(switch:) }.to raise_error(RuntimeError, /prematurely/)
     end
 
     it 'raises an exception if the switch has already detonated' do
       switch = create(:switch, detonated: true, missed_heartbeats: 10)
-      create_list(:heartbeat, 10, switch: switch)
+      create_list(:heartbeat, 10, switch:)
 
-      expect(described_class.perform(switch: switch)).to be(false)
+      expect(described_class.perform(switch:)).to be(false)
     end
 
     it 'sends an email to each switch destination' do
       switch = create(:switch, missed_heartbeats: 10)
-      create_list(:heartbeat, 10, switch: switch)
+      create_list(:heartbeat, 10, switch:)
 
       Sidekiq::Testing.inline! do
         expect_any_instance_of(SwitchDetonationMailer).to receive(:send_switch_data_to_switch_address) # rubocop:disable RSpec/AnyInstance
-        described_class.perform(switch: switch)
+        described_class.perform(switch:)
       end
     end
 
     it 'updates each switch destination as being notified' do
       switch = create(:switch, missed_heartbeats: 10)
-      create_list(:heartbeat, 10, switch: switch)
+      create_list(:heartbeat, 10, switch:)
 
       Sidekiq::Testing.inline! do
-        described_class.perform(switch: switch)
+        described_class.perform(switch:)
         expect(switch.reload.switch_address_notified).to be(true)
       end
     end
 
     it 'updates the switch as detonated' do
       switch = create(:switch, missed_heartbeats: 10)
-      create_list(:heartbeat, 10, switch: switch)
+      create_list(:heartbeat, 10, switch:)
 
       Sidekiq::Testing.inline! do
-        described_class.perform(switch: switch)
+        described_class.perform(switch:)
         expect(switch.reload.detonated).to be(true)
       end
     end
@@ -52,14 +52,14 @@ RSpec.describe SwitchDetonationService, type: :service do
     it 'does not raise an exception if the switch is still alive' do
       switch = create(:switch)
 
-      expect { described_class.perform(switch: switch, force: true) }.not_to raise_error
+      expect { described_class.perform(switch:, force: true) }.not_to raise_error
     end
 
     it 'raises an exception if the switch has already detonated' do
       switch = create(:switch, detonated: true)
-      create_list(:heartbeat, 10, switch: switch)
+      create_list(:heartbeat, 10, switch:)
 
-      expect(described_class.perform(switch: switch, force: true)).to be(false)
+      expect(described_class.perform(switch:, force: true)).to be(false)
     end
 
     it 'sends an email' do
@@ -67,7 +67,7 @@ RSpec.describe SwitchDetonationService, type: :service do
 
       Sidekiq::Testing.inline! do
         expect_any_instance_of(SwitchDetonationMailer).to receive(:send_switch_data_to_switch_address) # rubocop:disable RSpec/AnyInstance
-        described_class.perform(switch: switch, force: true)
+        described_class.perform(switch:, force: true)
       end
     end
 
@@ -75,7 +75,7 @@ RSpec.describe SwitchDetonationService, type: :service do
       switch = create(:switch)
 
       Sidekiq::Testing.inline! do
-        described_class.perform(switch: switch, force: true)
+        described_class.perform(switch:, force: true)
         expect(switch.reload.switch_address_notified).to be(true)
       end
     end
@@ -84,7 +84,7 @@ RSpec.describe SwitchDetonationService, type: :service do
       switch = create(:switch)
 
       Sidekiq::Testing.inline! do
-        described_class.perform(switch: switch, force: true)
+        described_class.perform(switch:, force: true)
         expect(switch.reload.detonated).to be(true)
       end
     end

@@ -8,6 +8,6 @@ class SendHeartbeatWorker
   def perform(switch_id)
     switch = Switch.find(switch_id)
 
-    SendHeartbeatService.perform(switch: switch)
+    SendHeartbeatService.perform(switch:)
   end
 end

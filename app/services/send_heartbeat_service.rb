@@ -41,14 +41,14 @@ class SendHeartbeatService < ApplicationService
       mark_missed_heartbeats
       send_switch_heartbeat
     else
-      SwitchDetonationService.perform(switch: switch, force: false)
+      SwitchDetonationService.perform(switch:, force: false)
     end
   end
 
   def send_switch_heartbeat
-    heartbeat = Heartbeat.create!(switch: switch)
+    heartbeat = Heartbeat.create!(switch:)
 
     Rails.logger.info("Sending heartbeat email for switch - #{@switch.id}")
-    HeartbeatMailer.with(heartbeat: heartbeat).send_heartbeat.deliver_now
+    HeartbeatMailer.with(heartbeat:).send_heartbeat.deliver_now
   end
 end
