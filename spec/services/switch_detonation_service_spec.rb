@@ -14,7 +14,7 @@ RSpec.describe SwitchDetonationService, type: :service do
       switch = create(:switch, detonated: true, missed_heartbeats: 10)
       create_list(:heartbeat, 10, switch: switch)
 
-      expect(described_class.perform(switch: switch)).to eq(false)
+      expect(described_class.perform(switch: switch)).to be(false)
     end
 
     it 'sends an email to each switch destination' do
@@ -33,7 +33,7 @@ RSpec.describe SwitchDetonationService, type: :service do
 
       Sidekiq::Testing.inline! do
         described_class.perform(switch: switch)
-        expect(switch.reload.switch_address_notified).to eq(true)
+        expect(switch.reload.switch_address_notified).to be(true)
       end
     end
 
@@ -43,7 +43,7 @@ RSpec.describe SwitchDetonationService, type: :service do
 
       Sidekiq::Testing.inline! do
         described_class.perform(switch: switch)
-        expect(switch.reload.detonated).to eq(true)
+        expect(switch.reload.detonated).to be(true)
       end
     end
   end
@@ -59,7 +59,7 @@ RSpec.describe SwitchDetonationService, type: :service do
       switch = create(:switch, detonated: true)
       create_list(:heartbeat, 10, switch: switch)
 
-      expect(described_class.perform(switch: switch, force: true)).to eq(false)
+      expect(described_class.perform(switch: switch, force: true)).to be(false)
     end
 
     it 'sends an email' do
@@ -76,7 +76,7 @@ RSpec.describe SwitchDetonationService, type: :service do
 
       Sidekiq::Testing.inline! do
         described_class.perform(switch: switch, force: true)
-        expect(switch.reload.switch_address_notified).to eq(true)
+        expect(switch.reload.switch_address_notified).to be(true)
       end
     end
 
@@ -85,7 +85,7 @@ RSpec.describe SwitchDetonationService, type: :service do
 
       Sidekiq::Testing.inline! do
         described_class.perform(switch: switch, force: true)
-        expect(switch.reload.detonated).to eq(true)
+        expect(switch.reload.detonated).to be(true)
       end
     end
   end

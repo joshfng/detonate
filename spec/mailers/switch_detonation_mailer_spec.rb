@@ -13,9 +13,9 @@ RSpec.describe SwitchDetonationMailer, type: :mailer do
     end
 
     it 'renders the headers' do
-      expect(mail.subject).to eq('Someone has sent you sensitive data')
-      expect(mail.to).to eq([switch.switch_address])
-      expect(mail.from).to eq(['noreply@detonateapp.com'])
+      expect(mail.subject).to be('Someone has sent you sensitive data')
+      expect(mail.to).to be([switch.switch_address])
+      expect(mail.from).to be(['noreply@detonateapp.com'])
     end
 
     it 'renders the body' do
