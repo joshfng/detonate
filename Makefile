@@ -22,7 +22,7 @@ lint-ruby:
 	docker compose run --rm app rubocop -a
 
 lint-security:
-	docker compose run --rm app brakeman
+	docker compose run --rm app -- bin/bundler-audit --update && bin/brakeman -q --no-pager
 
 ci:
 	docker compose run --rm test rspec

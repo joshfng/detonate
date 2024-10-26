@@ -268,12 +268,12 @@ GEM
     rubocop-performance (1.22.1)
       rubocop (>= 1.48.1, < 2.0)
       rubocop-ast (>= 1.31.1, < 2.0)
-    rubocop-rails (2.26.2)
+    rubocop-rails (2.27.0)
       activesupport (>= 4.2.0)
       rack (>= 1.1)
       rubocop (>= 1.52.0, < 2.0)
       rubocop-ast (>= 1.31.1, < 2.0)
-    rubocop-rspec (3.1.0)
+    rubocop-rspec (3.2.0)
       rubocop (~> 1.61)
     ruby-progressbar (1.13.0)
     sass-rails (6.0.0)
@@ -361,7 +361,7 @@ DEPENDENCIES
   puma
   rack-canonical-host
   rack-mini-profiler
-  rails (~> 6.1)
+  rails (~> 6.1, >= 6.1.7.10)
   redis
   redis-namespace
   rexml

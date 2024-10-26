@@ -82,7 +82,7 @@ jobs:
           LOCKBOX_MASTER_KEY: ${{ secrets.LOCKBOX_MASTER_KEY }}
         run: |
           bin/bundler-audit --update
-          bin/brakeman -q -w2
+          bin/brakeman -q --no-pager
 
   tests:
     name: Tests
