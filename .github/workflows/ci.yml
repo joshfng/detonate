@@ -17,7 +17,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 'lts/*'
+          node-version-file: '.tool-versions'
 
       - name: Find yarn cache location
         id: yarn-cache
@@ -58,7 +58,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 'lts/*'
+          node-version-file: '.tool-versions'
 
       - name: Find yarn cache location
         id: yarn-cache
@@ -108,7 +108,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 'lts/*'
+          node-version-file: '.tool-versions'
 
       - name: Find yarn cache location
         id: yarn-cache
