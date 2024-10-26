@@ -2,27 +2,29 @@
   "name": "detonate",
   "private": true,
   "dependencies": {
-    "@rails/actioncable": "^7.2.102",
-    "@rails/activestorage": "^7.2.102",
-    "@rails/ujs": "^7.1.402",
-    "@rails/webpacker": "5.4.0",
-    "bootstrap": "^4.6.0",
-    "css-what": "^6.1.0",
-    "is-svg": "^4.2.2",
-    "jquery": "^3.7.1",
-    "popper.js": "^1.16.1",
-    "turbolinks": "^5.2.0"
+    "@rails/actioncable": "^7.2",
+    "@rails/activestorage": "^7.2",
+    "@rails/ujs": "^7.1",
+    "@rails/webpacker": "^5.4",
+    "bootstrap": "^4.6",
+    "css-what": "^6.1",
+    "is-svg": "^4.2",
+    "jquery": "^3.7",
+    "popper.js": "^1.16",
+    "turbolinks": "^5.2",
+    "webpack": "^4.0.0"
   },
   "version": "0.1.0",
   "devDependencies": {
-    "eslint": "^8.57.1",
-    "eslint-config-airbnb-base": "^15.0.0",
-    "eslint-plugin-import": "^2.31.0",
-    "prettier": "^2.3.2",
-    "webpack-dev-server": "^3.11.2"
+    "eslint": "^8.57",
+    "eslint-config-airbnb-base": "^15.0",
+    "eslint-plugin-import": "^2.31",
+    "prettier": "^2.3",
+    "webpack-cli": "^4.0.0",
+    "webpack-dev-server": "^3"
   },
   "resolutions": {
-    "glob-parent": "^5.1.2",
-    "css-what": "^5.0.1"
+    "glob-parent": "^5.1",
+    "css-what": "^5.0"
   }
 }
