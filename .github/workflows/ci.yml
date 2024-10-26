@@ -134,4 +134,5 @@ jobs:
           DATABASE_URL: postgres://detonate:detonate@localhost/detonate_test
         run: |
           bin/rails db:setup
+          bin/rails assets:precompile
           bin/rspec
