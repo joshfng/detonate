@@ -16,6 +16,7 @@ Detonate encrypts and stores valuable information and checks in at a configurabl
 - More ways to expose the information when detonating besides just emailing it out (publish to external platforms/blogs/social media, sms, chat apps, rss, even physical mailings)
 
 [^1]: [https://en.wikipedia.org/wiki/Dead_man%27s_switch](https://en.wikipedia.org/wiki/Dead_man%27s_switch)
+
 [^2]: [https://en.wikipedia.org/wiki/Dead_man%27s_switch#Software](https://en.wikipedia.org/wiki/Dead_man%27s_switch#Software)
 
 ![homepage](img/home2.png)
