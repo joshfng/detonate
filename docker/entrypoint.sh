@@ -5,4 +5,4 @@ set -e
 echo "Environment: $RAILS_ENV"
 
 # Then run any passed command
-bundle exec ${@}
+bundle exec "${@}"

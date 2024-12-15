@@ -27,7 +27,7 @@ RUN apk -U add --no-cache \
 RUN gem install bundler --version "$BUNDLE_VERSION" \
   && rm -rf $GEM_HOME/cache/*
 
-COPY ./entrypoint.sh /usr/local/bin/entrypoint.sh
+COPY ./docker/entrypoint.sh /usr/local/bin/entrypoint.sh
 RUN chmod +x /usr/local/bin/entrypoint.sh
 
 COPY Gemfile Gemfile.lock ./
