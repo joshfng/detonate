@@ -2,7 +2,7 @@
   "name": "detonate",
   "private": true,
   "dependencies": {
-    "@rails/actioncable": "^7.2",
+    "@rails/actioncable": "^8.0",
     "@rails/activestorage": "^8.0",
     "@rails/ujs": "^7.1",
     "@rails/webpacker": "^5.4",
