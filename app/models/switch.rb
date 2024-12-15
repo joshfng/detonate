@@ -7,7 +7,7 @@ class Switch < ApplicationRecord
 
   has_encrypted :name, :content, :heartbeat_address, :switch_address
 
-  enum heartbeat_interval: { daily: 0, weekly: 1, monthly: 2 }
+  enum :heartbeat_interval, { daily: 0, weekly: 1, monthly: 2 }
 
   validates :name, presence: true
   validates :content, presence: true
