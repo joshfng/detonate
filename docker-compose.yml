@@ -48,7 +48,7 @@ services:
     stdin_open: true
     tty: true
     env_file: .env.development
-    entrypoint: docker/dev-entrypoint.sh
+    entrypoint: /usr/local/bin/dev-entrypoint.sh
     command: ["rails", "server", "-p", "3000", "-b", "0.0.0.0"]
     depends_on:
       - db
@@ -71,7 +71,7 @@ services:
   #   stdin_open: true
   #   tty: true
   #   env_file: .env.development
-  #   entrypoint: docker/dev-entrypoint.sh
+  #   entrypoint: /usr/local/bin/dev-entrypoint.sh
   #   command: ["./bin/webpack-dev-server"]
   #   restart: "always"
 
@@ -89,7 +89,7 @@ services:
     stdin_open: true
     tty: true
     env_file: .env.development
-    entrypoint: docker/dev-entrypoint.sh
+    entrypoint: /usr/local/bin/dev-entrypoint.sh
     command: ["sidekiq"]
     environment:
       RAILS_ENV: development
@@ -114,7 +114,7 @@ services:
     stdin_open: true
     tty: true
     env_file: .env.test
-    entrypoint: docker/test-entrypoint.sh
+    entrypoint: /usr/local/bin/test-entrypoint.sh
     command: ["rails", "-v"]
     depends_on:
       - db

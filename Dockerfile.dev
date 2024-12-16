@@ -8,14 +8,15 @@ ENV RAILS_LOG_TO_STDOUT true
 ENV RAILS_PORT 3000
 
 # copy entrypoint scripts and grant execution permissions
-COPY ./docker/dev-docker-entrypoint.sh /usr/local/bin/dev-entrypoint.sh
-COPY ./docker/test-docker-entrypoint.sh /usr/local/bin/test-entrypoint.sh
+COPY ./docker/dev-entrypoint.sh /usr/local/bin/dev-entrypoint.sh
+COPY ./docker/test-entrypoint.sh /usr/local/bin/test-entrypoint.sh
 RUN chmod +x /usr/local/bin/dev-entrypoint.sh && chmod +x /usr/local/bin/test-entrypoint.sh
 
 # install dependencies for application
 RUN apk -U add --no-cache \
   bash \
   build-base \
+  gcompat \
   git \
   postgresql-dev \
   postgresql-client \
@@ -25,9 +26,9 @@ RUN apk -U add --no-cache \
   yarn \
   imagemagick \
   tzdata \
-  less \
-  && rm -rf /var/cache/apk/* \
-  && mkdir -p $APP_PATH
+  less && \
+  rm -rf /var/cache/apk/* && \
+  mkdir -p $APP_PATH
 
 RUN gem install bundler --version "$BUNDLE_VERSION" \
 && rm -rf $GEM_HOME/cache/*
