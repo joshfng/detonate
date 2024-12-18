@@ -321,7 +321,7 @@ GEM
       tilt
     securerandom (0.4.1)
     semantic_range (3.1.0)
-    sidekiq (7.3.6)
+    sidekiq (7.3.7)
       connection_pool (>= 2.3.0)
       logger
       rack (>= 2.2.4)
