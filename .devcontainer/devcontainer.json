@@ -1,0 +1,13 @@
+{
+  "name": "detonate",
+  "dockerComposeFile": ["../docker-compose.yml", "docker-compose.yml"],
+  "service": "app",
+  "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+  "runServices": ["redis", "db", "worker"],
+  "forwardPorts": [3000, 6789, 5134],
+  "postCreateCommand": "bin/setup",
+  "features": {}
+  // "postCreateCommand": "cat /etc/os-release"
+  // "customizations": {},
+  // "remoteUser": "devcontainer"
+}
