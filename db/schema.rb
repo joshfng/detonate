@@ -10,17 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_31_010336) do
-
+ActiveRecord::Schema[8.0].define(version: 2021_03_31_010336) do
   # These are extensions that must be enabled in order to support this database
+  enable_extension "pg_catalog.plpgsql"
   enable_extension "pgcrypto"
-  enable_extension "plpgsql"
 
   create_table "heartbeats", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "switch_id", null: false
     t.boolean "confirmed", default: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "switches", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -34,15 +33,15 @@ ActiveRecord::Schema.define(version: 2021_03_31_010336) do
     t.text "heartbeat_address_ciphertext", null: false
     t.text "switch_address_ciphertext", null: false
     t.boolean "switch_address_notified", default: false, null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.boolean "users", default: false, null: false
     t.boolean "admin", default: false, null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "email_ciphertext", default: "", null: false
     t.string "email_bidx", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -67,5 +66,4 @@ ActiveRecord::Schema.define(version: 2021_03_31_010336) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
   end
-
 end
