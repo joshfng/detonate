@@ -4,7 +4,7 @@ on: [push]
 jobs:
   linters:
     name: Linters
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -21,34 +21,24 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version-file: '.tool-versions'
-
-      - name: Find yarn cache location
-        id: yarn-cache
-        run: echo "::set-output name=dir::$(yarn cache dir)"
-      - name: JS package cache
-        uses: actions/cache@v4
-        with:
-          path: ${{ steps.yarn-cache.outputs.dir }}
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-
+          cache: yarn
 
       - name: Install yarn packages
         run: |
-          yarn install --pure-lockfile
+          yarn install --frozen-lockfile
 
       - name: Run linters
         env:
           RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
           LOCKBOX_MASTER_KEY: ${{ secrets.LOCKBOX_MASTER_KEY }}
         run: |
-          bin/rubocop --config .rubocop.yml -P
+          bin/rubocop --config .rubocop.yml -P -f github
           yarn prettier --check .
           yarn run eslint
 
   security:
     name: Security
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -65,22 +55,11 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version-file: '.tool-versions'
-
-      - name: Find yarn cache location
-        id: yarn-cache
-        run: echo "::set-output name=dir::$(yarn cache dir)"
-
-      - name: JS package cache
-        uses: actions/cache@v4
-        with:
-          path: ${{ steps.yarn-cache.outputs.dir }}
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-
+          cache: yarn
 
       - name: Install yarn packages
         run: |
-          yarn install --pure-lockfile
+          yarn install --frozen-lockfile
 
       - name: Run security checks
         env:
@@ -92,15 +71,21 @@ jobs:
 
   tests:
     name: Tests
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-latest
     services:
       postgres:
-        image: postgres:16-alpine
+        image: postgres:17-alpine
         env:
           POSTGRES_USER: detonate
           POSTGRES_DB: detonate_test
           POSTGRES_PASSWORD: detonate
-        ports: ["5432:5432"]
+        ports:
+          - "5432:5432"
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
 
     steps:
       - name: Checkout code
@@ -118,29 +103,19 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version-file: '.tool-versions'
-
-      - name: Find yarn cache location
-        id: yarn-cache
-        run: echo "::set-output name=dir::$(yarn cache dir)"
-
-      - name: JS package cache
-        uses: actions/cache@v4
-        with:
-          path: ${{ steps.yarn-cache.outputs.dir }}
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-
+          cache: yarn
 
       - name: Install yarn packages
         run: |
-          yarn install --pure-lockfile
+          yarn install --frozen-lockfile
 
       - name: Run tests
         env:
           RAILS_ENV: test
           RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
           LOCKBOX_MASTER_KEY: ${{ secrets.LOCKBOX_MASTER_KEY }}
-          DATABASE_URL: postgres://detonate:detonate@localhost/detonate_test
+          POSTGRES_PASSWORD: detonate
+          DATABASE_URL: postgres://detonate:detonate@127.0.0.1:5432/detonate_test
         run: |
           bundle exec rails db:setup
           bundle exec rails assets:precompile

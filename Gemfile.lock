@@ -357,7 +357,6 @@ GEM
       simplecov_json_formatter (~> 0.1)
     simplecov-html (0.13.1)
     simplecov_json_formatter (0.1.4)
-    spring (4.2.1)
     sprockets (4.2.1)
       concurrent-ruby (~> 1.0)
       rack (>= 2.2.4, < 4)
@@ -424,7 +423,7 @@ DEPENDENCIES
   puma
   rack-canonical-host
   rack-mini-profiler
-  rails
+  rails (~> 8.0)
   redis
   redis-namespace
   rexml
@@ -437,7 +436,6 @@ DEPENDENCIES
   sidekiq (~> 7.3)
   sidekiq-cron
   simplecov
-  spring
   timecop
   turbolinks
   web-console

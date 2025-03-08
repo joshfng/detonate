@@ -23,7 +23,6 @@ Bundler.require(*Rails.groups)
 
 module Detonate
   class Application < Rails::Application
-    config.active_support.to_time_preserves_timezone = :zone
     # Please, add to the `ignore` list any other `lib` subdirectories that do
     # not contain `.rb` files, or that should not be reloaded or eager loaded.
     # Common ones are `templates`, `generators`, or `middleware`, for example.
@@ -36,6 +35,8 @@ module Detonate
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+
+    config.active_support.to_time_preserves_timezone = :zone
 
     config.time_zone = 'UTC'
 

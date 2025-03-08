@@ -3,7 +3,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-gem 'rails'
+gem 'rails', '~> 8.0'
 
 gem 'jbuilder'
 gem 'pg'
@@ -50,7 +50,7 @@ group :development do
   gem 'rubocop-performance', require: false
   gem 'rubocop-rails', require: false
   gem 'rubocop-rspec', require: false
-  gem 'spring'
+  # gem 'spring'
   gem 'web-console'
 end
 

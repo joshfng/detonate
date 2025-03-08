@@ -5,7 +5,7 @@ set -e
 echo "Environment: $RAILS_ENV"
 
 # Check if we need to install new gems
-bundle check || bundle install --jobs 20 --retry 5
+bundle check || bundle install --jobs "$(nproc)" --retry 5
 
 yarn install
 

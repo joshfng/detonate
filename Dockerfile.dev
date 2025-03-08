@@ -1,4 +1,4 @@
-FROM ruby:3.4.2-alpine
+FROM ruby:3.4.2
 
 ENV APP_PATH /var/app
 ENV BUNDLE_VERSION 2.6.2
@@ -13,21 +13,28 @@ COPY ./docker/test-entrypoint.sh /usr/local/bin/test-entrypoint.sh
 RUN chmod +x /usr/local/bin/dev-entrypoint.sh && chmod +x /usr/local/bin/test-entrypoint.sh
 
 # install dependencies for application
-RUN apk -U add --no-cache \
+RUN apt-get update && apt-get install -y --no-install-recommends \
   bash \
-  build-base \
-  gcompat \
+  build-essential \
+  curl \
   git \
-  postgresql-dev \
-  postgresql-client \
-  libxml2-dev \
-  libxslt-dev \
-  nodejs \
-  yarn \
   imagemagick \
+  libgmp-dev \
+  libjemalloc2 \
+  libpq-dev \
+  libssl-dev \
+  libvips \
+  libyaml-dev \
+  nodejs \
+  pkg-config \
+  postgresql \
+  rustc \
+  sqlite3 \
   tzdata \
-  less && \
-  rm -rf /var/cache/apk/* && \
+  yarn \
+  zlib1g-dev && \
+  apt-get autoclean && \
+  apt-get autoremove && \
   mkdir -p $APP_PATH
 
 RUN gem install bundler --version "$BUNDLE_VERSION" && \

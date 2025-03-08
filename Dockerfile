@@ -1,28 +1,36 @@
-FROM ruby:3.4.2-alpine
+FROM ruby:3.4.2
 
 ENV APP_PATH /var/app
-ENV BUNDLE_VERSION 2.2.22
+ENV BUNDLE_VERSION 2.6.2
 ENV BUNDLE_PATH /usr/local/bundle/gems
 ENV TMP_PATH /tmp/
 ENV RAILS_LOG_TO_STDOUT true
 ENV RAILS_PORT 3000
 
 # install dependencies for application
-RUN apk -U add --no-cache \
+RUN apt-get update && apt-get install -y --no-install-recommends \
   bash \
-  build-base \
+  build-essential \
+  curl \
   git \
-  postgresql-dev \
-  postgresql-client \
-  libxml2-dev \
-  libxslt-dev \
-  nodejs \
-  yarn \
   imagemagick \
+  libgmp-dev \
+  libjemalloc2 \
+  libpq-dev \
+  libssl-dev \
+  libvips \
+  libyaml-dev \
+  nodejs \
+  pkg-config \
+  postgresql \
+  rustc \
+  sqlite3 \
   tzdata \
-  less \
-  && rm -rf /var/cache/apk/* \
-  && mkdir -p $APP_PATH
+  yarn \
+  zlib1g-dev && \
+  apt-get autoclean && \
+  apt-get autoremove && \
+  mkdir -p $APP_PATH
 
 RUN gem install bundler --version "$BUNDLE_VERSION" \
   && rm -rf $GEM_HOME/cache/*
