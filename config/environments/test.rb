@@ -36,14 +36,28 @@ Rails.application.configure do
   # ActionMailer::Base.deliveries array.
   config.action_mailer.delivery_method = :test
 
-  # Set host to be used by links generated in mailer templates.
-  config.action_mailer.default_url_options = { host: "example.com" }
+  config.action_controller.default_url_options = {
+    host: 'localhost'
+  }
+
+  config.action_mailer.default_url_options = {
+    host: 'localhost'
+  }
+
+  # # Log to STDOUT with the current request id as a default log tag.
+  # config.log_tags = [ :request_id ]
+  # config.logger   = ActiveSupport::TaggedLogging.logger(STDOUT)
+
+  # # Change to "debug" to log everything (including potentially personally-identifiable information!)
+  # config.log_level = ENV.fetch("RAILS_LOG_LEVEL", "debug")
 
   # Print deprecation notices to the stderr.
   config.active_support.deprecation = :stderr
 
   # Raises error for missing translations.
   # config.i18n.raise_on_missing_translations = true
+
+  config.active_job.queue_adapter = :sidekiq
 
   # Annotate rendered view with file names.
   # config.action_view.annotate_rendered_view_with_filenames = true
