@@ -3,7 +3,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-gem 'rails', '~> 8.0'
+gem 'rails'
 
 gem 'jbuilder'
 gem 'pg'
@@ -24,7 +24,7 @@ gem 'lockbox'
 # Background worker stuff
 gem 'redis'
 gem 'redis-namespace'
-gem 'sidekiq'
+gem 'sidekiq', '~> 7.3'
 gem 'sidekiq-cron'
 
 gem 'rack-canonical-host'
