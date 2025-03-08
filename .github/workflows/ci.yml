@@ -15,7 +15,7 @@ jobs:
           rubygems: latest
           bundler: latest
           bundler-cache: true
-          cache-version: 2
+          cache-version: 3
 
       - name: Setup Node
         uses: actions/setup-node@v4
@@ -59,7 +59,7 @@ jobs:
           rubygems: latest
           bundler: latest
           bundler-cache: true
-          cache-version: 2
+          cache-version: 3
 
       - name: Setup Node
         uses: actions/setup-node@v4
@@ -112,7 +112,7 @@ jobs:
           rubygems: latest
           bundler: latest
           bundler-cache: true
-          cache-version: 2
+          cache-version: 3
 
       - name: Setup Node
         uses: actions/setup-node@v4
@@ -142,6 +142,6 @@ jobs:
           LOCKBOX_MASTER_KEY: ${{ secrets.LOCKBOX_MASTER_KEY }}
           DATABASE_URL: postgres://detonate:detonate@localhost/detonate_test
         run: |
-          bin/rails db:setup
-          bin/rails assets:precompile
-          bin/rspec
+          bundle exec rails db:setup
+          bundle exec rails assets:precompile
+          bundle exec rspec
