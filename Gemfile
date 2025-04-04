@@ -24,7 +24,7 @@ gem 'lockbox'
 # Background worker stuff
 gem 'redis'
 gem 'redis-namespace'
-gem 'sidekiq', '~> 7.3'
+gem 'sidekiq', '~> 8.0'
 gem 'sidekiq-cron'
 
 gem 'rack-canonical-host'
