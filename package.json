@@ -26,12 +26,10 @@
   "resolutions": {
     "glob-parent": "^5.1",
     "css-what": "^5.0"
+    "popper.js": "^1.16",
+    "turbolinks": "^5.2",
   },
-  @@ -14,6 +14,10 @@
-     "popper.js": "^1.16",
-     "turbolinks": "^5.2",
-   },
-   "engines": {
+  "engines": {
     "node": ">=20.0.0"
   },
 }
